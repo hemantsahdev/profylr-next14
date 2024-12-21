@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,6 +25,7 @@ interface FormValues {
     followUpDate: Date  | undefined;
     selectedResume: string;
     importedResume: File | null;
+    notes: string;
 }
 
 const initialValues: FormValues = {
@@ -32,10 +35,17 @@ const initialValues: FormValues = {
     followUpDate: undefined,
     selectedResume: "",
     importedResume: null,
+    notes:"string"
 };
+
 const existingResumes = ["resume1.pdf", "resume2.pdf", "resume3.pdf"];
 
-const JobApplicationForm = () => {
+interface JobApplicationProps{
+    isEditMode:boolean,
+    jobId:string
+}
+
+const JobApplicationForm = ({isEditMode,jobId}:JobApplicationProps) => {
 
     const [importedResume, setImportedResume] = useState<File|null>(null);
         
