@@ -69,7 +69,7 @@
       "react/jsx-pascal-case": ["error", { "allowAllCaps": true, "ignore": [] }],
       "react/jsx-boolean-value": ["error", "always"],
 
-      "@typescript-eslint/no-unsafe-assignment": "warn", // Warn on assigning types that are not safe
+      // "@typescript-eslint/no-unsafe-assignment": "warn", // Warn on assigning types that are not safe
     "@typescript-eslint/explicit-module-boundary-types": "warn", // Warn when no explicit return type is specified on exported functions and classes
 
       "@typescript-eslint/no-inferrable-types": "warn" // Warn when a variable can be explicitly declared with a type
