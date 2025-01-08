@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
@@ -49,6 +49,6 @@ const EventCard = ({event,onDelete,onUpdate}) => {
     
         </div>
     );
-}
+};
 
-export default EventCard
+export default EventCard;

@@ -24,12 +24,12 @@ export default function RootLayout({
                         <Sidebar />
                     </section>
                     <section className="h-full w-[95.5%] flex flex-col bg-gradient-to-br from-indigo-100 to-rose-100 ">
-                        <div className="min-h-[10%] w-full ">
-                            <div className="h-full w-full">
-                                <Topbar />
+                        <div className="min-h-[8%] w-full ">
+                            <div className="h-full w-full bg-red-300">
+                                {/* <Topbar /> */}
                             </div>
                         </div>
-                        <div className="min-h-[90%] w-full">
+                        <div className="min-h-[92%] w-full">
                             {children}
                         </div>
 
