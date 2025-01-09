@@ -12,7 +12,7 @@ const Draggable = (props) => {
     } : undefined;
   
     return (
-        <div ref={setNodeRef} className="h-40 w-40 border bg-red-400" style={style}  {...listeners} {...attributes} >
+        <div ref={setNodeRef} style={style}  {...listeners} {...attributes} >
             {props.children}
         </div>
     );

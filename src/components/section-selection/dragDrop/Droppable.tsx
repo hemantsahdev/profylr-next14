@@ -11,7 +11,7 @@ const Droppable = (props) => {
     };
     
     return (
-        <div ref={setNodeRef} style={style} className="h-44 w-48 border border-green-500" >
+        <div ref={setNodeRef} style={style} className="h-full w-full"  >
             {props.children}
         </div>
     );

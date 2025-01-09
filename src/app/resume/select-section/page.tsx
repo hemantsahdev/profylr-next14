@@ -1,5 +1,7 @@
 import AvailableSections from "@/components/section-selection/AvailableSections";
+import DndKit from "@/components/section-selection/dragDrop/DndKit";
 import DragDropSections from "@/components/section-selection/dragDrop/DragDropSections";
+import Dummy from "@/components/section-selection/dragDrop/Dummy";
 import React from "react";
 
 const resumeSections = [
@@ -25,63 +27,8 @@ const resumeSections = [
 const SelectSections = () => {
     return (
         <div className="h-full w-full px-6 pb-4" >
-            <div className="h-full w-full bg-gray-50 rounded-xl px-4" >
-               
-                <div className="h-full w-full flex " >
-                  
-                    <div className="h-full w-[60%] " >
-                        {/* header */}
-                        <div className="h-[20%] w-full  flex items-center pl-10 " >
-                            <p className="text-2xl font-semibold"> <span className="mx-2 text-5xl font-bold" >Drag & Drop</span>  sections you want in your resume</p>
-                        </div>
-
-                        <hr />
-
-                        <div className="h-[20%] w-full  flex items-center justify-center ">
-                            <p className="text-2xl font-semibold" >Resume Sections</p>
-                        </div>
-
-                        <div className="h-[60%] w-full  " >
-
-                            {resumeSections.map((section,idx)=>(
-                                <>
-                                    {/* Brick */}
-                                    <button 
-                                        className=" inline-block px-8 py-4 rounded-xl border-2 border-gray-600 mx-[1px] my-[1px] cursor-grab " 
-                                        style={{backgroundColor:`${section.hex200 }`,border: `1px solid ${section.hex600}` }} >
-                                        <p className="text-lg font-semibold  tracking-wide " style={{color:`${section.hex600}`}} >{section.name}</p>
-                                    </button>
-                                </>
-                            ))}
-                           
-                        </div>
-
-                    </div>
-
-                    <div className="h-full w-[40%] flex items-center justify-center " >
-                        <div className="h-[95%] w-[70%] bg-white rounded-lg  border-gray-400 border-2 " >
-                            <div className="h-[10%] w-full flex items-center justify-center ">
-                                <p className="text-2xl font-semibold" >Resume</p>
-                            </div>
-                            <hr />
-                            <div className="h-[90%] w-full  p-3 " >
-                                <div className="h-full w-full  flex flex-col gap-1 px-4 " >
-
-                                    { [1,2,3,4].map(e=>(
-                                        <>
-                                            {/* strip */}
-                                            <div className="h-[4rem] w-full bg-green-200  border-2 border-green-800 rounded-xl flex items-center justify-center" >
-                                                <p className="text-xl font-semibold " >Header</p>
-                                            </div>
-                                        </>
-
-                                    )) } 
-                                   
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
+            <div className="h-full w-full rounded-xl px-4" >
+                <Dummy/>
             </div>
            
         </div>
