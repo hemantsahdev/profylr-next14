@@ -1,4 +1,5 @@
-import AvailableSections from "@/components/section-selection/AvailableSections";
+import SectionSelection from "@/components/section-selection/SectionSelection";
+import AvailableSections from "@/components/section-selection/SectionSelection";
 import DndKit from "@/components/section-selection/dragDrop/DndKit";
 import DragDropSections from "@/components/section-selection/dragDrop/DragDropSections";
 import Dummy from "@/components/section-selection/dragDrop/Dummy";
@@ -28,7 +29,7 @@ const SelectSections = () => {
     return (
         <div className="h-full w-full px-6 pb-4" >
             <div className="h-full w-full rounded-xl px-4" >
-                <Dummy/>
+                <SectionSelection/>
             </div>
            
         </div>

@@ -5,7 +5,7 @@ import { Box, Grid, Home, Image, Mail, MessageSquare, SquarePen, Timer, User } f
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
+import { Button } from "../../components/ui/button";
 
 
 const Sidebar = () => {

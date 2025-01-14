@@ -2,7 +2,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import React from "react";
 import {CSS} from "@dnd-kit/utilities";
 
-const SortableItems = ({id,children}) => {
+const SortableItem = ({id,children}) => {
     const {
         attributes,
         listeners,
@@ -23,4 +23,4 @@ const SortableItems = ({id,children}) => {
     );
 };
 
-export default SortableItems;
+export default SortableItem;

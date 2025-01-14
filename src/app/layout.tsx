@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../css/custom-scrollbar.css";
 import Topbar from "@/components/topbar/Topbar";
-import Sidebar from "@/components/sidebar/Sidebar";
+import Sidebar from "@/shared/sidebar/Sidebar";
 
 
 
@@ -19,7 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <main className="flex h-screen w-screen bg-[#f2f6ff] ">
+                <main className="flex h-screen w-screen  ">
                     <section className="h-full w-[4.5%]" >
                         <Sidebar />
                     </section>
