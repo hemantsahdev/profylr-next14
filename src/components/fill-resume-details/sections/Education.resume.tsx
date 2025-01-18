@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { EducationForm } from "@/types/resume-details/education.type";
 import FormikSelect from "@/shared/select/FormikSelect";
 import FormikDatePicker from "@/shared/calendar/FormikDatePicker";
+import { Switch } from "@/components/ui/switch";
+import { useState } from "react";
 
 
 const validationSchema = Yup.object({
@@ -44,7 +46,7 @@ const initialValues : EducationForm = {
         yearOfCompletion : "",
         result: "",
     },
-    undergraduate: {
+    underGraduate: {
         institution: "",
         degree: "",  //(e.g., Bachelor of Science in Computer Science)
         yearOfCompletion: "",
@@ -63,13 +65,33 @@ const initialValues : EducationForm = {
     },
 };
 
+interface SelectedSectionsType {
+    postGraduate:boolean
+    underGraduate:boolean
+    higherSecondary:boolean
+    secondarySchool:boolean
+}
+
 const Education = () => {
+
+    const [selectedSections,setSelectedSections] = useState<SelectedSectionsType>({
+        postGraduate:true,
+        underGraduate:true,
+        higherSecondary:false,
+        secondarySchool:false
+    });
 
     const submitHandler = (values:EducationForm)=>{
         console.log(values);
     };
 
-    
+    const handleCheckedChange = (sectionName: keyof SelectedSectionsType)=>{
+
+        setSelectedSections((prev)=>({
+            ...prev,
+            [sectionName]: !prev[sectionName]
+        }));
+    };
 
     return (
         <Card className="h-[30rem] w-full bg-white rounded-xl overflow-y-auto custom-scrollbar ">
@@ -84,7 +106,13 @@ const Education = () => {
 
                             {/* postGraduate */}
                             <div className="space-y-4" > 
-                                <CardTitle>Post Graduate</CardTitle>
+                                <CardTitle> 
+                                    <div className="flex items-center  gap-8 ">
+                                        <p> Post Graduate  </p>
+                                        <Switch  checked={selectedSections.postGraduate} onCheckedChange={()=> handleCheckedChange("postGraduate") }  />
+                                    </div> 
+                                    
+                                </CardTitle>
                                 <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
                                         <Label htmlFor="postGraduate.institution">Institution Name</Label>
@@ -93,6 +121,8 @@ const Education = () => {
                                             id="postGraduate.institution"
                                             name="postGraduate.institution"
                                             placeholder="Enter institution name"
+                                            disabled={!selectedSections.postGraduate}
+
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -102,7 +132,9 @@ const Education = () => {
                                             id="postGraduate.degree"
                                             options={["MSc", "MBA", "MA", "M.Tech"]}
                                             name="postGraduate.degree"
-                                            placeholder="Enter field of study"
+                                            placeholder="Select Degree"
+                                            disabled={!selectedSections.postGraduate}
+
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -112,6 +144,7 @@ const Education = () => {
                                             year={true} month={false} day={false}
                                             id="postGraduate.yearOfCompletion"
                                             name="postGraduate.yearOfCompletion"
+                                            disabled={!selectedSections.postGraduate}
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -121,6 +154,7 @@ const Education = () => {
                                             id="postGraduate.result"
                                             name="postGraduate.result"
                                             placeholder="Enter result"
+                                            disabled={!selectedSections.postGraduate}
                                         />
                                     </div>
                                 </CardContent>
@@ -128,43 +162,53 @@ const Education = () => {
 
                             {/* underGraduate */}
                             <div className="space-y-4" > 
-                                <CardTitle>Undergraduate</CardTitle>
+                                <CardTitle className="flex items-center  gap-8 ">
+                                    <p> Under Graduate  </p>
+                                    <Switch checked={selectedSections.underGraduate} onCheckedChange={()=> handleCheckedChange("underGraduate") }  />
+                                </CardTitle> 
                                 <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.institution">Institution Name</Label>
+                                        <Label htmlFor="underGraduate.institution">Institution Name</Label>
                                         <Field
                                             as={Input}
-                                            id="undergraduate.institution"
-                                            name="undergraduate.institution"
+                                            id="underGraduate.institution"
+                                            name="underGraduate.institution"
                                             placeholder="Enter institute name"
+                                            disabled={!selectedSections.underGraduate}
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.degree">Degree</Label>
+                                        <Label htmlFor="underGraduate.degree">Degree</Label>
                                         <Field
                                             component={FormikSelect}
                                             options={["B.Tech","B.A","B.Sc"]}
-                                            id="undergraduate.degree"
-                                            name="undergraduate.degree"
+                                            id="underGraduate.degree"
+                                            name="underGraduate.degree"
                                             placeholder="Select Degree"
+                                            disabled={!selectedSections.underGraduate}
+
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.yearOfCompletion">Year of Completion</Label>
+                                        <Label htmlFor="underGraduate.yearOfCompletion">Year of Completion</Label>
                                         <Field
                                             component = {FormikDatePicker}
                                             year={true} month={false} day={false}
-                                            id="undergraduate.yearOfCompletion"
-                                            name="undergraduate.yearOfCompletion"
+                                            id="underGraduate.yearOfCompletion"
+                                            name="underGraduate.yearOfCompletion"
+                                            disabled={!selectedSections.underGraduate}
+
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.result">Result</Label>
+                                        <Label htmlFor="underGraduate.result">Result</Label>
                                         <Field
                                             as={Input}
-                                            id="undergraduate.result"
-                                            name="undergraduate.result"
+                                            id="underGraduate.result"
+                                            name="underGraduate.result"
                                             placeholder="Enter result"
+                                            disabled={!selectedSections.underGraduate}
+
                                         />
                                     </div>
                                 </CardContent>
@@ -172,7 +216,10 @@ const Education = () => {
 
                             {/* higher secondary */}
                             <div className="space-y-4" >
-                                <CardTitle>Higher Secondary</CardTitle>
+                                <CardTitle className="flex items-center  gap-8 ">
+                                    <p> Higher Secondary  </p>
+                                    <Switch checked={selectedSections.higherSecondary} onCheckedChange={()=> handleCheckedChange("higherSecondary") }  />
+                                </CardTitle>
                                 <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
                                         <Label htmlFor="higherSecondary.institution">Institution Name</Label>
@@ -181,6 +228,7 @@ const Education = () => {
                                             id="higherSecondary.institution"
                                             name="higherSecondary.institution"
                                             placeholder="Enter institute name"
+                                            disabled={!selectedSections.higherSecondary}
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -190,7 +238,8 @@ const Education = () => {
                                             options={["Non-Medical","Medical","Arts & Humaities","Commerce"]}
                                             id="higherSecondary.specialization"
                                             name="higherSecondary.specialization"
-                                            placeholder="Enter field of study"
+                                            placeholder="Select specialization"
+                                            disabled={!selectedSections.higherSecondary}
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -202,7 +251,7 @@ const Education = () => {
                                             day={false}
                                             id="higherSecondary.yearOfCompletion"
                                             name="higherSecondary.yearOfCompletion"
-                                          
+                                            disabled={!selectedSections.higherSecondary}
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -212,6 +261,7 @@ const Education = () => {
                                             id="higherSecondary.result"
                                             name="higherSecondary.result"
                                             placeholder="Enter result"
+                                            disabled={!selectedSections.higherSecondary}
                                         />
                                     </div>
                                 </CardContent>
@@ -219,7 +269,11 @@ const Education = () => {
 
                             {/* secondary  */}
                             <div className="space-y-4" >
-                                <CardTitle>Secondary</CardTitle>
+                                <CardTitle className="flex items-center  gap-8 ">
+                                    <p> Secondary School  </p>
+                                    <Switch checked={selectedSections.secondarySchool} onCheckedChange={()=> handleCheckedChange("secondarySchool") }  />
+
+                                </CardTitle>
                                 <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
                                         <Label htmlFor="secondarySchool.institution">Institution Name</Label>
@@ -228,6 +282,8 @@ const Education = () => {
                                             id="secondarySchool.institution"
                                             name="secondarySchool.institution"
                                             placeholder="Enter institute name"
+                                            disabled={!selectedSections.secondarySchool}
+
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -237,6 +293,7 @@ const Education = () => {
                                             year={true} month={false} day={false}
                                             id="secondarySchool.yearOfCompletion"
                                             name="secondarySchool.yearOfCompletion"
+                                            disabled={!selectedSections.secondarySchool}
                                         
                                         />
                                     </div>
@@ -247,6 +304,8 @@ const Education = () => {
                                             id="secondarySchool.result"
                                             name="secondarySchool.result"
                                             placeholder="Enter result"
+                                            disabled={!selectedSections.secondarySchool}
+
                                         />
                                     </div>
                                 </CardContent>

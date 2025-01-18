@@ -15,7 +15,7 @@ interface BasicEducation {
 
 export interface EducationForm {
     postGraduate?: AdvancedEducation
-    undergraduate?: AdvancedEducation,
+    underGraduate?: AdvancedEducation,
     higherSecondary?: BasicEducation ,
     secondarySchool?: Pick<BasicEducation, "institution" | "result" | "yearOfCompletion">
 } 

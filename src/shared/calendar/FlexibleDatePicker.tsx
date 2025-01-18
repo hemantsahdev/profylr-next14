@@ -26,9 +26,10 @@ interface FlexibleDatePickerProps {
   day?: boolean
   onChange: (date: Date | null) => void
   initialDate?: Date
+  disabled? : boolean
 }
 
-const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, initialDate,}: FlexibleDatePickerProps) =>{
+const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, initialDate, disabled = false}: FlexibleDatePickerProps) =>{
 
     const [date, setDate] = useState<Date | undefined>(initialDate);
 
@@ -58,7 +59,7 @@ const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, i
 
     if (year && !month && !day) {
         return (
-            <Select onValueChange={(value) => handleSelect(new Date(parseInt(value), 0, 1))}>
+            <Select onValueChange={(value) => handleSelect(new Date(parseInt(value), 0, 1))} disabled={disabled} >
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Select year" />
                 </SelectTrigger>
@@ -80,6 +81,7 @@ const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, i
                     onValueChange={(value) =>
                         handleSelect(date ? new Date(date.getFullYear(), parseInt(value), 1) : undefined)
                     }
+                    disabled={disabled}
                 >
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Select month" />
@@ -121,6 +123,7 @@ const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, i
                         "w-[280px] justify-start text-left font-normal",
                         !date && "text-muted-foreground"
                     )}
+                    disabled={disabled}
                 >
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {date ? formatDate() : <span>Pick a date</span>}
@@ -132,6 +135,7 @@ const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, i
                     selected={date}
                     onSelect={handleSelect}
                     initialFocus={true}
+                    disabled={disabled}
                 />
             </PopoverContent>
         </Popover>
