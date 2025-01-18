@@ -20,13 +20,13 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <main className="flex h-screen w-screen  ">
-                    <section className="h-full w-[4.5%]" >
+                    <section className="h-full w-[4.5%] bg-white " >
                         <Sidebar />
                     </section>
                     <section className="h-full w-[95.5%] flex flex-col bg-gradient-to-br from-indigo-100 to-rose-100 ">
                         <div className="min-h-[8%] w-full ">
-                            <div className="h-full w-full bg-red-300">
-                                {/* <Topbar /> */}
+                            <div className="h-full w-full ">
+                                <Topbar />
                             </div>
                         </div>
                         <div className="min-h-[92%] w-full">
