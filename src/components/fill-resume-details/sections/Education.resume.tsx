@@ -6,38 +6,38 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-// import type { EducationFormValues } from "../types/form";
+import { EducationForm } from "@/types/resume-details/education.type";
+import FormikSelect from "@/shared/select/FormikSelect";
+import FormikDatePicker from "@/shared/calendar/FormikDatePicker";
+
 
 const validationSchema = Yup.object({
-    postGraduate: Yup.object(
-        {
-            institution: Yup.string().min(2).max(999),
-            degree: Yup.string().min(2).max(999) 
-            yearOfCompletion : "",
-            result: "",
-        }  
-    ) ,
-    undergraduate: {
-        institution: "",
-        degree: "",  //(e.g., Bachelor of Science in Computer Science)
-        yearOfCompletion: "",
-        result: "",
-    },
-    higherSecondary: {
-        institution: "",
-        specialization: "",  //(e.g., Bachelor of Science in Computer Science)
-        yearOfCompletion: "",
-        result: "",
-    },
-    secondarySchool: {
-        institution: "",
-        yearOfCompletion: "",
-        result: "",
-    },
+    postGraduate: Yup.object({
+        institution: Yup.string().min(2).max(999),
+        degree: Yup.string().min(2).max(999) ,
+        yearOfCompletion : Yup.string(),
+        result: Yup.string(),
+    }),
+    underGraduate: Yup.object({
+        institution: Yup.string().min(2).max(999),
+        degree: Yup.string().min(2).max(999) ,
+        yearOfCompletion : Yup.string(),
+        result: Yup.string(),
+    }),
+    higherSecondary: Yup.object({
+        institution: Yup.string().min(2).max(999),
+        specialization: Yup.string().min(2).max(999) ,
+        yearOfCompletion : Yup.string(),
+        result: Yup.string(),
+    }),
+    secondarySchool: Yup.object({
+        institution: Yup.string().min(2).max(999),
+        yearOfCompletion : Yup.string(),
+        result: Yup.string(),
+    }),
 });
 
-const initialValues = {
-
+const initialValues : EducationForm = {
     postGraduate: {
         institution: "",
         degree: "",  //(e.g., Master's in Business Administration)
@@ -64,46 +64,98 @@ const initialValues = {
 };
 
 const Education = () => {
+
+    const submitHandler = (values:EducationForm)=>{
+        console.log(values);
+    };
+
+    
+
     return (
         <Card className="h-[30rem] w-full bg-white rounded-xl overflow-y-auto custom-scrollbar ">
             <CardContent className="pt-6" >
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={(values) => {
-                        console.log(values);
-                    }}
+                    onSubmit={(values) => submitHandler(values)}
                 >
                     {({ errors, touched }) => (
-                        <Form className="h-full space-y-6  ">
+                        <Form className="h-full   ">
+
+                            {/* postGraduate */}
                             <div className="space-y-4" > 
-                                <CardTitle>Undergraduate</CardTitle>
-                                <CardContent className="grid gap-4 sm:grid-cols-2">
+                                <CardTitle>Post Graduate</CardTitle>
+                                <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.instituteName">Institute Name</Label>
+                                        <Label htmlFor="postGraduate.institution">Institution Name</Label>
                                         <Field
                                             as={Input}
-                                            id="undergraduate.instituteName"
-                                            name="undergraduate.instituteName"
-                                            placeholder="Enter institute name"
+                                            id="postGraduate.institution"
+                                            name="postGraduate.institution"
+                                            placeholder="Enter institution name"
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.field">Field</Label>
+                                        <Label htmlFor="postGraduate.degree">Degree</Label>
                                         <Field
-                                            as={Input}
-                                            id="undergraduate.field"
-                                            name="undergraduate.field"
+                                            component={FormikSelect}
+                                            id="postGraduate.degree"
+                                            options={["MSc", "MBA", "MA", "M.Tech"]}
+                                            name="postGraduate.degree"
                                             placeholder="Enter field of study"
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="undergraduate.yearOfPassing">Year of Passing</Label>
+                                        <Label htmlFor="postGraduate.yearOfCompletion">Year of Completion</Label>
+                                        <Field
+                                            component = {FormikDatePicker}
+                                            year={true} month={false} day={false}
+                                            id="postGraduate.yearOfCompletion"
+                                            name="postGraduate.yearOfCompletion"
+                                        />
+                                    </div>
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="postGraduate.result">Result</Label>
                                         <Field
                                             as={Input}
-                                            id="undergraduate.yearOfPassing"
-                                            name="undergraduate.yearOfPassing"
-                                            placeholder="YYYY"
+                                            id="postGraduate.result"
+                                            name="postGraduate.result"
+                                            placeholder="Enter result"
+                                        />
+                                    </div>
+                                </CardContent>
+                            </div>
+
+                            {/* underGraduate */}
+                            <div className="space-y-4" > 
+                                <CardTitle>Undergraduate</CardTitle>
+                                <CardContent className="grid gap-4 sm:grid-cols-4">
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="undergraduate.institution">Institution Name</Label>
+                                        <Field
+                                            as={Input}
+                                            id="undergraduate.institution"
+                                            name="undergraduate.institution"
+                                            placeholder="Enter institute name"
+                                        />
+                                    </div>
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="undergraduate.degree">Degree</Label>
+                                        <Field
+                                            component={FormikSelect}
+                                            options={["B.Tech","B.A","B.Sc"]}
+                                            id="undergraduate.degree"
+                                            name="undergraduate.degree"
+                                            placeholder="Select Degree"
+                                        />
+                                    </div>
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="undergraduate.yearOfCompletion">Year of Completion</Label>
+                                        <Field
+                                            component = {FormikDatePicker}
+                                            year={true} month={false} day={false}
+                                            id="undergraduate.yearOfCompletion"
+                                            name="undergraduate.yearOfCompletion"
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -117,81 +169,95 @@ const Education = () => {
                                     </div>
                                 </CardContent>
                             </div>
+
+                            {/* higher secondary */}
                             <div className="space-y-4" >
-                                <CardTitle>Twelfth Grade</CardTitle>
-                                <CardContent className="grid gap-4 sm:grid-cols-2">
+                                <CardTitle>Higher Secondary</CardTitle>
+                                <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
-                                        <Label htmlFor="twelfthGrade.instituteName">Institute Name</Label>
+                                        <Label htmlFor="higherSecondary.institution">Institution Name</Label>
                                         <Field
                                             as={Input}
-                                            id="twelfthGrade.instituteName"
-                                            name="twelfthGrade.instituteName"
+                                            id="higherSecondary.institution"
+                                            name="higherSecondary.institution"
                                             placeholder="Enter institute name"
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="twelfthGrade.field">Field</Label>
+                                        <Label htmlFor="higherSecondary.specialization">Specialization</Label>
                                         <Field
-                                            as={Input}
-                                            id="twelfthGrade.field"
-                                            name="twelfthGrade.field"
+                                            component = {FormikSelect}
+                                            options={["Non-Medical","Medical","Arts & Humaities","Commerce"]}
+                                            id="higherSecondary.specialization"
+                                            name="higherSecondary.specialization"
                                             placeholder="Enter field of study"
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="twelfthGrade.yearOfPassing">Year of Passing</Label>
+                                        <Label htmlFor="higherSecondary.yearOfCompletion">Year of Completion</Label>
                                         <Field
-                                            as={Input}
-                                            id="twelfthGrade.yearOfPassing"
-                                            name="twelfthGrade.yearOfPassing"
-                                            placeholder="YYYY"
+                                            component = {FormikDatePicker}
+                                            year={true}
+                                            month={false} 
+                                            day={false}
+                                            id="higherSecondary.yearOfCompletion"
+                                            name="higherSecondary.yearOfCompletion"
+                                          
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="twelfthGrade.result">Result</Label>
+                                        <Label htmlFor="higherSecondary.result">Result</Label>
                                         <Field
                                             as={Input}
-                                            id="twelfthGrade.result"
-                                            name="twelfthGrade.result"
+                                            id="higherSecondary.result"
+                                            name="higherSecondary.result"
                                             placeholder="Enter result"
                                         />
                                     </div>
                                 </CardContent>
                             </div>
+
+                            {/* secondary  */}
                             <div className="space-y-4" >
-                                <CardTitle>Tenth Grade</CardTitle>
-                                <CardContent className="grid gap-4 sm:grid-cols-2">
+                                <CardTitle>Secondary</CardTitle>
+                                <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
-                                        <Label htmlFor="tenthGrade.instituteName">Institute Name</Label>
+                                        <Label htmlFor="secondarySchool.institution">Institution Name</Label>
                                         <Field
                                             as={Input}
-                                            id="tenthGrade.instituteName"
-                                            name="tenthGrade.instituteName"
+                                            id="secondarySchool.institution"
+                                            name="secondarySchool.institution"
                                             placeholder="Enter institute name"
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="tenthGrade.yearOfPassing">Year of Passing</Label>
+                                        <Label htmlFor="secondarySchool.yearOfCompletion">Year of Passing</Label>
                                         <Field
-                                            as={Input}
-                                            id="tenthGrade.yearOfPassing"
-                                            name="tenthGrade.yearOfPassing"
-                                            placeholder="YYYY"
+                                            component = {FormikDatePicker}
+                                            year={true} month={false} day={false}
+                                            id="secondarySchool.yearOfCompletion"
+                                            name="secondarySchool.yearOfCompletion"
+                                        
                                         />
                                     </div>
                                     <div className="grid gap-2">
-                                        <Label htmlFor="tenthGrade.result">Result</Label>
+                                        <Label htmlFor="secondarySchool.result">Result</Label>
                                         <Field
                                             as={Input}
-                                            id="tenthGrade.result"
-                                            name="tenthGrade.result"
+                                            id="secondarySchool.result"
+                                            name="secondarySchool.result"
                                             placeholder="Enter result"
                                         />
                                     </div>
                                 </CardContent>
                             </div>
+
                             <div className="flex justify-end">
-                                <Button type="submit" className="bg-themePurple hover:bg-purple-700">
+                                <Button
+                                    type="submit" 
+                                    className="bg-themePurple hover:bg-purple-700"
+                                    size={"lg"}
+                                >
                                             Save
                                 </Button>
                             </div>

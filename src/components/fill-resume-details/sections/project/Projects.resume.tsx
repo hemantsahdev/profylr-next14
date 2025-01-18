@@ -17,6 +17,12 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { ProjectCard } from "./ProjectCard";
 
+
+const initialValues ={
+    
+};
+
+
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Project name is required"),
     technologies: Yup.string().required("Technologies are required"),
@@ -30,10 +36,12 @@ const validationSchema = Yup.object().shape({
 export function Projects() {
     const [projects, setProjects] = useState([]);
 
+    const submitHandler = (values);
+
     return (
         <Card className="h-full w-full bg-white rounded-xl">
             <CardContent className="h-full pt-6">
-                
+
                 <Formik
                     initialValues={{
                         name: "",
