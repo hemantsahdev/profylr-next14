@@ -11,6 +11,7 @@ import FormikSelect from "@/shared/select/FormikSelect";
 import FormikDatePicker from "@/shared/calendar/FormikDatePicker";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
+import FormikInputField from "@/shared/input/FormikInputField";
 
 
 const validationSchema = Yup.object({
@@ -115,14 +116,12 @@ const Education = () => {
                                 </CardTitle>
                                 <CardContent className="grid gap-4 sm:grid-cols-4">
                                     <div className="grid gap-2">
-                                        <Label htmlFor="postGraduate.institution">Institution Name</Label>
-                                        <Field
-                                            as={Input}
-                                            id="postGraduate.institution"
-                                            name="postGraduate.institution"
-                                            placeholder="Enter institution name"
-                                            disabled={!selectedSections.postGraduate}
-
+                                        <FormikInputField 
+                                            name = "postGraduate.institution"
+                                            id = "postGraduate.institution"  
+                                            placeholder="Enter institution name"  
+                                            disabled={!selectedSections.postGraduate} 
+                                            label = "Institution Name"
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -331,3 +330,6 @@ const Education = () => {
 };
 
 export default Education;
+
+
+

@@ -22,7 +22,6 @@ const initialValues ={
     
 };
 
-
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Project name is required"),
     technologies: Yup.string().required("Technologies are required"),
@@ -33,10 +32,10 @@ const validationSchema = Yup.object().shape({
         .min(1, "At least one description point is required"),
 });
 
-export function Projects() {
+const Projects = ()=> {
+
     const [projects, setProjects] = useState([]);
 
-    const submitHandler = (values);
 
     return (
         <Card className="h-full w-full bg-white rounded-xl">
@@ -54,8 +53,7 @@ export function Projects() {
                     }}
                     validationSchema={validationSchema}
                     onSubmit={(values, { resetForm }) => {
-                        setProjects([...projects, values]);
-                        resetForm();
+                        console.log(values);
                     }}
                 >
                     {({ values, setFieldValue, errors, touched }) => (
@@ -231,5 +229,6 @@ export function Projects() {
             </CardContent>
         </Card>
     );
-}
+};
 
+export default Projects;

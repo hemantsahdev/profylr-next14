@@ -14,33 +14,29 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { TechnicalSkillForm } from "@/types/resume-details/technicalSkills.type";
+import * as Yup from "yup";
+import { categories, proficiencyLevels } from "@/assets/static/skills.static";
 
-interface Skill {
-  name: string
-  proficiency: string
-  experience: string
-  category: string
-}
 
-export default function TechnicalSkills() {
-    const [skills, setSkills] = useState<Skill[]>([]);
+const initialValues = {
+    name: "",
+    proficiency: "",
+    experience: "",
+    category: ""
+};
 
-    const proficiencyLevels = [
-        "Beginner",
-        "Intermediate",
-        "Advanced",
-        "Expert"
-    ];
+const validationSchema  = Yup.object({
+    name:Yup.string().min(2).max(50),
+    proficiency : Yup.string()
+});
 
-    const categories = [
-        "Programming Languages",
-        "Frameworks",
-        "Databases",
-        "Tools",
-        "Soft Skills"
-    ];
 
-    const handleSubmit = (values: Skill, { resetForm }: { resetForm: () => void }) => {
+const TechnicalSkills = ()=> {
+
+    const [skills, setSkills] = useState< TechnicalSkillForm[]>([]);
+
+    const handleSubmit = (values: TechnicalSkillForm, { resetForm }: { resetForm: () => void }) => {
         setSkills([...skills, values]);
         resetForm();
     };
@@ -54,12 +50,7 @@ export default function TechnicalSkills() {
             <CardContent className="h-full pt-6">
            
                 <Formik
-                    initialValues={{
-                        name: "",
-                        proficiency: "Intermediate",
-                        experience: "",
-                        category: "Programming Languages"
-                    }}
+                    initialValues={initialValues}
                     onSubmit={handleSubmit}
                 >
                     {({ values, setFieldValue }) => (
@@ -162,5 +153,7 @@ export default function TechnicalSkills() {
             </CardContent>
         </Card>
     );
-}
+};
 
+
+export default TechnicalSkills;
