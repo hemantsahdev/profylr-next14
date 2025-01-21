@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FormikHelpers } from "formik";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,9 +14,10 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { TechnicalSkillForm } from "@/types/resume-details/technicalSkills.type";
 import * as Yup from "yup";
-import { categories, proficiencyLevels } from "@/assets/static/skills.static";
+import {  availableSkillsData, proficiencyLevels } from "@/assets/static/skills.static";
+import { SkillForm } from "@/types/resume-details/Skills.type";
+import { cn } from "@/lib/utils";
 
 
 const initialValues = {
@@ -32,11 +33,11 @@ const validationSchema  = Yup.object({
 });
 
 
-const TechnicalSkills = ()=> {
+const Skills = ()=> {
 
-    const [skills, setSkills] = useState< TechnicalSkillForm[]>([]);
+    const [skills, setSkills] = useState<SkillForm[]>([]);
 
-    const handleSubmit = (values: TechnicalSkillForm, { resetForm }: { resetForm: () => void }) => {
+    const handleSubmit = (values: SkillForm, { resetForm }: FormikHelpers<SkillForm>) => {
         setSkills([...skills, values]);
         resetForm();
     };
@@ -47,7 +48,7 @@ const TechnicalSkills = ()=> {
 
     return (
         <Card className="h-full w-full bg-white rounded-xl">
-            <CardContent className="h-full pt-6">
+            <CardContent className="h-full pt-6 space-y-6 ">
            
                 <Formik
                     initialValues={initialValues}
@@ -106,10 +107,10 @@ const TechnicalSkills = ()=> {
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select category" />
                                         </SelectTrigger>
-                                        <SelectContent>
-                                            {categories.map((category) => (
-                                                <SelectItem key={category} value={category}>
-                                                    {category}
+                                        <SelectContent className="max-w-lg h-[20rem] mt-10 " >
+                                            {availableSkillsData.map((skill,idx) => (
+                                                <SelectItem key={idx} value={skill.id}>
+                                                    <p className={cn("text-sm",skill.isDomain ? "font-semibold" : "ml-2" )} >{skill.value}</p>
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
@@ -117,7 +118,7 @@ const TechnicalSkills = ()=> {
                                 </div>
                             </div>
 
-                            <Button type="submit" className="w-full">
+                            <Button type="submit" className="w-full bg-themePurple ">
               Add Skill
                             </Button>
                         </Form>
@@ -125,9 +126,12 @@ const TechnicalSkills = ()=> {
                 </Formik>
 
                 <div className="space-y-4">
-                    <h2 className="text-xl font-semibold">Added Skills</h2>
-                    <div className="grid gap-3 md:grid-cols-2">
-                        {skills.map((skill, index) => (
+                    <div className=" w-full flex justify-between " >
+                        <h2 className="text-xl font-semibold">Added Skills</h2>
+                        <p className="text-blue-500 hover:cursor-pointer hover:underline rounded-xl px-3 bg-blue-100 border border-blue-300 " >See how it looks in your resume! </p>
+                    </div>
+                    <div className="flex gap-4">
+                        {skills && skills.length>0 ? skills.map((skill, index) => (
                             <Card key={index} className="p-4 relative">
                                 <Button
                                     variant="ghost"
@@ -138,15 +142,19 @@ const TechnicalSkills = ()=> {
                                     <X className="h-4 w-4" />
                                 </Button>
                                 <div className="space-y-2">
-                                    <div className="font-medium">{skill.name}</div>
+                                    <div className="font-semibold">{skill.name}</div>
                                     <div className="text-sm text-muted-foreground">
                                         <div>Proficiency: {skill.proficiency}</div>
                                         <div>Experience: {skill.experience} years</div>
-                                        <div>Category: {skill.category}</div>
+                                        <div>Category: {getCategoryNameById(skill.category)}</div>
                                     </div>
                                 </div>
                             </Card>
-                        ))}
+                        )):
+                            <div className="h-full w-full fle items-center justify-center  text-xl text-muted-foreground" > 
+                            No Skills Added Yet
+                            </div>
+                        }
                     </div>
                 </div>
       
@@ -156,4 +164,9 @@ const TechnicalSkills = ()=> {
 };
 
 
-export default TechnicalSkills;
+const getCategoryNameById = (categoryId:string):string=>{
+    const skill = availableSkillsData.find(s=>s.id == categoryId);
+    return skill ? skill.value : "Skill not acceptable";
+};
+
+export default Skills;

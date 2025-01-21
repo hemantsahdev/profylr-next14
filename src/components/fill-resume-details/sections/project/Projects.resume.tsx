@@ -18,15 +18,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ProjectCard } from "./ProjectCard";
 
 
-const initialValues ={
-    
+const initialValues = {
+    name: "",
+    technologies: "",
+    from: new Date(),
+    to: new Date(),
+    description: [""],
+    repository: "",
+    liveLink: "",
 };
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Project name is required"),
-    technologies: Yup.string().required("Technologies are required"),
-    from: Yup.date().required("Start date is required"),
-    to: Yup.date().required("End date is required"),
+    technologies: Yup.string(),
+    from: Yup.date(),
+    to: Yup.date(),
     description: Yup.array()
         .of(Yup.string())
         .min(1, "At least one description point is required"),
@@ -42,15 +48,7 @@ const Projects = ()=> {
             <CardContent className="h-full pt-6">
 
                 <Formik
-                    initialValues={{
-                        name: "",
-                        technologies: "",
-                        from: new Date(),
-                        to: new Date(),
-                        description: [""],
-                        repository: "",
-                        liveLink: "",
-                    }}
+                    initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={(values, { resetForm }) => {
                         console.log(values);

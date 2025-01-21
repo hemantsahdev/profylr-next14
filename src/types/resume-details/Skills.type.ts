@@ -1,4 +1,4 @@
-export interface TechnicalSkillForm {
+export interface SkillForm {
   name: string
   proficiency: string
   experience: string

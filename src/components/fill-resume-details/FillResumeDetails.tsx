@@ -3,14 +3,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PersonalInfo from "./sections/PersonalInfo.resume";
 import Summary from "./sections/Summary.resume";
 import Education from "./sections/Education.resume";
-import TechnicalSkills from "./sections/TechnicalSkills.resume";
 import WorkExperiences from "./sections/WorkExperiences.resume";
 import Certifications from "./sections/Certifications.resume";
 import AchievementsAndAwards from "./sections/AchievementsAndAwards.resume";
 import ExtraCurricualrActivities from "./sections/ExtraCurricualrActivities.resume";
 import PublicationsAndResearch from "./sections/PublicationsAndResearch.resume";
 import LanguagesKnown from "./sections/LanguagesKnown.resume";
-import { Projects } from "./sections/project/Projects.resume";
+import Projects  from "./sections/project/Projects.resume";
+import Skills from "./sections/Skills.resume";
 
 const headings = [
     { value: "personalInfo", label: "Personal Info" },
@@ -47,7 +47,7 @@ const FillResumeDetails = () => {
             <TabsContent value="personalInfo" className="h-[calc(100%-5rem)] " > <PersonalInfo /> </TabsContent>
             <TabsContent value="summary" className="h-[calc(100%-5rem)] " > <Summary /> </TabsContent>
             <TabsContent value="education" className="h-[calc(100%-5rem)] "> <Education /> </TabsContent>
-            <TabsContent value="technicalSkills" className="h-[calc(100%-5rem)] "> <TechnicalSkills /> </TabsContent>
+            <TabsContent value="technicalSkills" className="h-[calc(100%-5rem)] "> <Skills /> </TabsContent>
             <TabsContent value="projects" className="h-[calc(100%-5rem)] " > <Projects /> </TabsContent>
             <TabsContent value="workExperiences" className="h-[calc(100%-5rem)] "> <WorkExperiences /> </TabsContent>
             <TabsContent value="certifications" className="h-[calc(100%-5rem)] "> <Certifications /> </TabsContent>
