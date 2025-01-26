@@ -16,7 +16,7 @@ const FormikInputField = ({id,name,placeholder,disabled=false,label , optional =
     
     return (
         <>
-            <Label htmlFor={id}>{label} <span className="text-xs text-muted-foreground" >Optional</span> </Label>
+            <Label htmlFor={id}>{label} { optional &&  <span className="text-xs text-muted-foreground" >Optional</span>} </Label>
             <Field
                 as={Input}
                 id = {id}

@@ -129,7 +129,7 @@ const Education = () => {
                                         <Field
                                             component={FormikSelect}
                                             id="postGraduate.degree"
-                                            options={["MSc", "MBA", "MA", "M.Tech"]}
+                                            dropdownOptions={["MSc", "MBA", "MA", "M.Tech"]}
                                             name="postGraduate.degree"
                                             placeholder="Select Degree"
                                             disabled={!selectedSections.postGraduate}
@@ -180,7 +180,7 @@ const Education = () => {
                                         <Label htmlFor="underGraduate.degree">Degree</Label>
                                         <Field
                                             component={FormikSelect}
-                                            options={["B.Tech","B.A","B.Sc"]}
+                                            dropdownOptions={["B.Tech","B.A","B.Sc"]}
                                             id="underGraduate.degree"
                                             name="underGraduate.degree"
                                             placeholder="Select Degree"
@@ -234,7 +234,7 @@ const Education = () => {
                                         <Label htmlFor="higherSecondary.specialization">Specialization</Label>
                                         <Field
                                             component = {FormikSelect}
-                                            options={["Non-Medical","Medical","Arts & Humaities","Commerce"]}
+                                            dropdownOptions={["Non-Medical","Medical","Arts & Humaities","Commerce"]}
                                             id="higherSecondary.specialization"
                                             name="higherSecondary.specialization"
                                             placeholder="Select specialization"

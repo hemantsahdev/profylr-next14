@@ -6,9 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { WorkExperienceForm } from "@/types/resume-details/workExperience.type";
-import FromToDatePicker from "@/shared/calendar/FromToDatePicker";
-import FormikFieldArray from "@/shared/formikComponents/FormikFieldArray";
 import { CertificationsForm } from "@/types/resume-details/certification.type";
 import FormikDatePicker from "@/shared/calendar/FormikDatePicker";
 import FormikSelect from "@/shared/formikComponents/FormikSelect";
@@ -78,7 +75,6 @@ const validationSchema = Yup.object().shape({
 });
   
 
-
 const Certifications= () => {
     return (
         <Card className="h-full w-full bg-white rounded-xl">
@@ -104,7 +100,7 @@ const Certifications= () => {
                                                     as={Input}
                                                     id="name"
                                                     name="name"
-                                                    placeholder="Eg: Software Engineer or Marketing Specialist."
+                                                    placeholder="Eg: Certified Kubernetes Administrator (CKA)"
                                                 />
                                                 {errors.name && touched.name && (
                                                     <p className="text-sm text-red-500 mt-1">

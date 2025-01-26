@@ -8,11 +8,11 @@ interface FormikComponentFieldProps<T> {
     component : React.ComponentType<T>
     label:string
     disabled ?: boolean
-    dropdownOptions ?: string[]  //for select dropdown
+    dropdownOptions ?: string[]  //for SELECT dropdown
     optionalField ?: boolean
-    year ?:boolean  //for date picker
-    month ?:boolean //for date picker
-    day ?:boolean  //for date picker
+    year ?:boolean  //for DATE_PICKER
+    month ?:boolean //for DATE_PICKER
+    day ?:boolean  //for DATE_PICKER
 }
 
 const FormikComponentField = <T,>({id,name,placeholder,component,disabled=false,label,optionalField = false ,...props}:FormikComponentFieldProps<T>)=>{
