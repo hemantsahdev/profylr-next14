@@ -5,49 +5,102 @@ import { Formik, Form, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Calendar } from "@/components/ui/calendar";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import { ProjectForm } from "@/types/resume-details/project.type";
+import { Label } from "@/components/ui/label";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import FromToDatePicker from "@/shared/calendar/FromToDatePicker";
+import FormikFieldArray from "@/shared/formikComponents/FormikFieldArray";
+import { Description } from "@radix-ui/react-dialog";
 import { ProjectCard } from "./ProjectCard";
+  
+  
 
+const defaultLinkOptions = [{type:"github",value:""},{type:"live",value:""}];
 
-const initialValues = {
-    name: "",
-    technologies: "",
-    from: new Date(),
-    to: new Date(),
+const initialValues : ProjectForm = {
+    title: "",
     description: [""],
-    repository: "",
-    liveLink: "",
+    technologies: [],
+    role : "",
+    achievements :[""],
+    duration:{
+        from: new Date(),
+        to: new Date(),
+    },
+    link : defaultLinkOptions
 };
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Project name is required"),
-    technologies: Yup.string(),
-    from: Yup.date(),
-    to: Yup.date(),
+    title: Yup.string()
+        .required("Project title is required.")
+        .max(100, "Title should not exceed 100 characters."),
     description: Yup.array()
         .of(Yup.string())
-        .min(1, "At least one description point is required"),
+        .min(1, "At least one description is required for the project.")
+        .required("Description is required."),
+    technologies: Yup.array()
+        .of(Yup.string())
+        .min(1, "Add at least one technology used in the project.")
+        .required("Technologies are required."),
+    role: Yup.string()
+        .min(2, "Role should be at least 2 characters.")
+        .max(50, "Role should not exceed 50 characters."),
+    achievements: Yup.array()
+        .of(Yup.string())
+        .min(1, "Add at least one achievement to enhance your resume.")
+        .max(4, "Too many achievements may clutter your resume."),
+    duration: Yup.object({
+        from: Yup.date().required("Start date is required."),
+        to: Yup.date()
+            .required("End date is required.")
+            .test(
+                "isToAfterFrom",
+                "Completion date should be after the starting date.",
+                function (value) {
+                    const { from } = this.parent;
+                    return !from || !value || from < value;
+                }
+            ),
+    }),
+    link: Yup.array()
+        .of(
+            Yup.object({
+                type: Yup.string()
+                    .required("Please specify the type of link, e.g., GitHub or Live Demo."),
+                value: Yup.string()
+                    .url("Provide a valid URL.")
+                    .required("Link value is required."),
+            })
+        ),
 });
+  
+const MAX_ACHIEVEMENTS = 3;
 
 const Projects = ()=> {
 
     const [projects, setProjects] = useState([]);
 
-
+    const handleAddNewAchievements = (push : (obj:string)=>void ,length:number)=>{
+        if(MAX_ACHIEVEMENTS && length < MAX_ACHIEVEMENTS){
+            push("");
+        }else{
+            alert("Too many achievements.");
+        }
+    };
     return (
         <Card className="h-full w-full bg-white rounded-xl">
             <CardContent className="h-full pt-6">
 
-                <Formik
+                <Formik<ProjectForm>
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={(values, { resetForm }) => {
@@ -56,134 +109,102 @@ const Projects = ()=> {
                 >
                     {({ values, setFieldValue, errors, touched }) => (
                         <Form className="space-y-4">
-                            <div>
-                                <Field
-                                    as={Input}
-                                    name="name"
-                                    placeholder="Enter project name"
-                                    className={cn(
-                                        errors.name && touched.name && "border-red-500"
-                                    )}
-                                />
-                                {errors.name && touched.name && (
-                                    <p className="text-sm text-red-500 mt-1">{errors.name}</p>
-                                )}
-                            </div>
 
-                            <div>
-                                <Field
-                                    as={Input}
-                                    name="technologies"
-                                    placeholder="Enter technologies used"
-                                    className={cn(
-                                        errors.technologies && touched.technologies && "border-red-500"
-                                    )}
-                                />
-                                {errors.technologies && touched.technologies && (
-                                    <p className="text-sm text-red-500 mt-1">{errors.technologies}</p>
-                                )}
-                            </div>
+                            {/* title , duration (start date , end date) */}
+                            <div className=" w-full grid grid-cols-2 gap-8  " >
 
-                            <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <Popover>
-                                        <PopoverTrigger asChild={true}>
-                                            <Button
-                                                variant="outline"
-                                                className={cn(
-                                                    "w-full justify-start text-left font-normal",
-                                                    !values.from && "text-muted-foreground"
-                                                )}
-                                            >
-                                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                                {values.from ? (
-                                                    format(values.from, "PPP")
-                                                ) : (
-                                                    <span>From date</span>
-                                                )}
-                                            </Button>
-                                        </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0">
-                                            <Calendar
-                                                mode="single"
-                                                selected={values.from}
-                                                onSelect={(date) => setFieldValue("from", date)}
-                                                initialFocus={true}
-                                            />
-                                        </PopoverContent>
-                                    </Popover>
+                                    <Label htmlFor="title" >Project Title</Label>
+                                    <Field
+                                        as={Input}
+                                        name="title"
+                                        placeholder="Enter project name"
+                                        className={cn(
+                                            errors.title && touched.title && "border-red-500"
+                                        )}
+                                    />
+                                    {errors.title && touched.title && (
+                                        <p className="text-sm text-red-500 mt-1">{errors.title}</p>
+                                    )}
+                                </div>
+
+                                <div className=" items-center" >
+                                    <Label>Duration</Label>
+                                    <FromToDatePicker<ProjectForm> values={values} setFieldValue={setFieldValue} involvedKey="duration"  />
+                                </div>
+                            </div>
+                          
+                            <div className="grid grid-cols-2 gap-6" >
+
+                                <div>
+                                    <Label htmlFor="description" >Short Description</Label>
+                                    <FormikFieldArray involvedKey={"description"} placeholder="Enter description" />
+                                    {errors.description && touched.description && (
+                                        <p className="text-sm text-red-500 mt-1">
+                                            {errors.description as string}
+                                        </p>
+                                    )}
                                 </div>
 
                                 <div>
-                                    <Popover>
-                                        <PopoverTrigger asChild={true}>
-                                            <Button
-                                                variant="outline"
-                                                className={cn(
-                                                    "w-full justify-start text-left font-normal",
-                                                    !values.to && "text-muted-foreground"
-                                                )}
-                                            >
-                                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                                {values.to ? (
-                                                    format(values.to, "PPP")
-                                                ) : (
-                                                    <span>To date</span>
-                                                )}
-                                            </Button>
-                                        </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0">
-                                            <Calendar
-                                                mode="single"
-                                                selected={values.to}
-                                                onSelect={(date) => setFieldValue("to", date)}
-                                                initialFocus={true}
-                                            />
-                                        </PopoverContent>
-                                    </Popover>
+                                    <Label htmlFor="achievements" >Key Achievements </Label>
+                                    <FormikFieldArray involvedKey={"achievements"} placeholder="Enter achievements" />
+                                    {errors.achievements && touched.achievements && (
+                                        <p className="text-sm text-red-500 mt-1">
+                                            {errors.achievements as string}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
 
-                            <div>
-                                <FieldArray name="description">
-                                    {({ push, remove }) => (
-                                        <div className="space-y-2">
-                                            {values.description.map((point: string, index: number) => (
-                                                <div key={index} className="flex gap-2">
-                                                    <Field
-                                                        as={Input}
-                                                        name={`description.${index}`}
-                                                        placeholder="Enter description point"
-                                                        className="flex-1"
-                                                    />
-                                                    {index > 0 && (
-                                                        <Button
-                                                            type="button"
-                                                            variant="destructive"
-                                                            onClick={() => remove(index)}
-                                                        >
-                            Remove
-                                                        </Button>
-                                                    )}
-                                                </div>
-                                            ))}
-                                            <Button
-                                                type="button"
-                                                variant="secondary"
-                                                onClick={() => push("")}
-                                            >
-                      Add Description
-                                            </Button>
-                                        </div>
-                                    )}
-                                </FieldArray>
-                                {errors.description && touched.description && (
-                                    <p className="text-sm text-red-500 mt-1">
-                                        {errors.description as string}
-                                    </p>
-                                )}
-                            </div>
+                            <div className="grid grid-cols-2 gap-6 " >
 
+                                <div>
+                                    <Label htmlFor="technologies" >Technologies Used</Label>
+                                    <Field
+                                        as={Input}
+                                        name="technologies"
+                                        placeholder="Your role in the project"
+                                        className={cn(
+                                            errors.technologies && touched.technologies && "border-red-500"
+                                        )}
+                                    />
+                                    {errors.technologies && touched.technologies && (
+                                        <p className="text-sm text-red-500 mt-1">{errors.technologies}</p>
+                                    )}
+                                </div>
+
+                         
+                                <div>
+                                    <Label htmlFor="role" >Role</Label>
+                                    <Field
+                                        as={Input}
+                                        name="role"
+                                        placeholder="Your role in the project"
+                                        className={cn(
+                                            errors.role && touched.role && "border-red-500"
+                                        )}
+                                    />
+                                    {errors.role && touched.role && (
+                                        <p className="text-sm text-red-500 mt-1">{errors.role}</p>
+                                    )}
+                                </div>
+                            </div>
+                         
+                            <div>
+                                <Select>
+                                    <SelectTrigger className="w-[180px]">
+                                        <SelectValue placeholder="Add Links" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="create" className="bg-gray-700 text-white" >Create new</SelectItem>
+                                        <SelectItem value="github">Github</SelectItem>
+                                        <SelectItem value="live">Live</SelectItem>
+                                    </SelectContent>
+                                </Select>
+
+                            </div>
+                            {/* 
                             <div>
                                 <Field
                                     as={Input}
@@ -198,7 +219,7 @@ const Projects = ()=> {
                                     name="liveLink"
                                     placeholder="Live link (optional)"
                                 />
-                            </div>
+                            </div> */}
 
                             <Button type="submit" className="w-full">
               Add Project

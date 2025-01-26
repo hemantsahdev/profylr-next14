@@ -7,11 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { EducationForm } from "@/types/resume-details/education.type";
-import FormikSelect from "@/shared/select/FormikSelect";
+import FormikSelect from "@/shared/formikComponents/FormikSelect";
 import FormikDatePicker from "@/shared/calendar/FormikDatePicker";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import FormikInputField from "@/shared/input/FormikInputField";
+import FormikInputField from "@/shared/formikComponents/FormikInputField";
 
 
 const validationSchema = Yup.object({

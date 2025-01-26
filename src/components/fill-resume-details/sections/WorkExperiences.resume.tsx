@@ -1,172 +1,165 @@
 "use client";
 
-import { Formik, Form, Field, FieldArray } from "formik";
-import * as yup from "yup";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Pencil, Trash2 } from "lucide-react";
-// import type { ExperienceFormValues, Experience } from "../types/form";
+import { WorkExperienceForm } from "@/types/resume-details/workExperience.type";
+import FromToDatePicker from "@/shared/calendar/FromToDatePicker";
+import FormikFieldArray from "@/shared/formikComponents/FormikFieldArray";
 
-const validationSchema = yup.object({
-    experiences: yup.array().of(
-        yup.object({
-            organizationName: yup.string().required("Required"),
-            position: yup.string().required("Required"),
-            from: yup.string().required("Required"),
-            to: yup.string().required("Required"),
-            description: yup.string().required("Required"),
-        })
-    ),
+
+const initialValues : WorkExperienceForm = {
+    title: "",
+    companyName : "",
+    employmentDates : {
+        from : "",
+        to : ""
+    },
+    location : "",
+    responsibilities : [""],
+    achievements : [""]
+};
+
+const validationSchema = Yup.object().shape({
+    title: Yup.string()
+        .min(2, "Title is too short.")
+        .max(60, "Title too long.")
+        .required("Title is required to register this as a work experience"),
+    companyName: Yup.string()
+        .min(2, "Company name is too short.")
+        .max(100, "Company name too long.")
+        .required("Company name is required."),
+    employmentDates: Yup.object().shape({
+        from: Yup.date().required("Start date is required."),
+        to: Yup.date()
+            .required("End date is required.")
+            .test(
+                "isToAfterFrom",
+                "Completion date should be after the starting date.",
+                function (value) {
+                    const { from } = this.parent;
+                    return !from || !value || from < value;
+                }
+            ),
+    }),
+    location: Yup.string()
+        .min(2, "Location is too short.")
+        .max(100, "Location too long."),
+    responsibilities: Yup.array()
+        .of(Yup.string().min(2, "Responsibility description is too short."))
+        .required("At least one responsibility is required."),
+    achievements: Yup.array()
+        .of(Yup.string().min(2, "Achievement description is too short."))
+        .required("At least one achievement is required."),
 });
-
-const initialValues = {
-    experiences: [],
-};
-
-// const emptyExperience: Omit<Experience, "id"> = {
-//     organizationName: "",
-//     position: "",
-//     from: "",
-//     to: "",
-//     description: "",
-// };
-
-const emptyExperience = {
-    organizationName: "",
-    position: "",
-    from: "",
-    to: "",
-    description: "",
-};
+  
 
 const WorkExperiences = ()=> {
     return (
         <Card className="h-full w-full bg-white rounded-xl">
             <CardContent className="pt-6" >
-                <Formik
+                <Formik<WorkExperienceForm>
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={(values) => {
                         console.log(values);
                     }}
                 >
-                    {({ values, errors, touched }) => (
+                    {({ values, errors, touched,setFieldValue }) => (
                         <Form className="space-y-6">
-                            <FieldArray name="experiences">
-                                {({ push, remove }) => (
-                                    <div className="space-y-6">
-                                        <CardContent className="pt-6">
-                                            <div className="grid gap-4">
-                                                <div className="grid gap-2">
-                                                    <Label htmlFor="organizationName">Organization Name</Label>
-                                                    <Field
-                                                        as={Input}
-                                                        id="organizationName"
-                                                        name="organizationName"
-                                                        placeholder="Enter organization name"
-                                                    />
-                                                </div>
-                                                <div className="grid gap-2">
-                                                    <Label htmlFor="position">Position</Label>
-                                                    <Field
-                                                        as={Input}
-                                                        id="position"
-                                                        name="position"
-                                                        placeholder="Enter position"
-                                                    />
-                                                </div>
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div className="grid gap-2">
-                                                        <Label htmlFor="from">From</Label>
-                                                        <Field
-                                                            as={Input}
-                                                            id="from"
-                                                            name="from"
-                                                            placeholder="YYYY-MM"
-                                                        />
-                                                    </div>
-                                                    <div className="grid gap-2">
-                                                        <Label htmlFor="to">To</Label>
-                                                        <Field
-                                                            as={Input}
-                                                            id="to"
-                                                            name="to"
-                                                            placeholder="YYYY-MM"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="grid gap-2">
-                                                    <Label htmlFor="description">Description</Label>
-                                                    <Field
-                                                        as={Textarea}
-                                                        id="description"
-                                                        name="description"
-                                                        placeholder="Enter description"
-                                                    />
-                                                </div>
-                                                <Button
-                                                    type="button"
-                                                    onClick={() => {
-                                                        push({
-                                                            id: Date.now().toString(),
-                                                            ...emptyExperience,
-                                                        });
-                                                    }}
-                                                    className="w-full"
-                                                >
-                        Add Experience
-                                                </Button>
-                                            </div>
-                                        </CardContent>
+                            <div className="space-y-6">
+                                <CardContent className="pt-6">
+                                    <div className="grid gap-4">
 
-                                        {values.experiences.length > 0 && (
-                                            <Card>
-                                                <CardContent className="pt-6">
-                                                    <div className="space-y-4">
-                                                        <h3 className="font-semibold">Added Experiences</h3>
-                                                        {values.experiences.map((experience, index) => (
-                                                            <div
-                                                                key={experience.id}
-                                                                className="flex items-center justify-between rounded-lg border p-4"
-                                                            >
-                                                                <div>
-                                                                    <h4 className="font-medium">{experience.organizationName}</h4>
-                                                                    <p className="text-sm text-muted-foreground">
-                                                                        {experience.position}
-                                                                    </p>
-                                                                </div>
-                                                                <div className="flex gap-2">
-                                                                    <Button
-                                                                        type="button"
-                                                                        variant="outline"
-                                                                        size="icon"
-                                                                        onClick={() => {
-                                                                            // Implement edit functionality
-                                                                        }}
-                                                                    >
-                                                                        <Pencil className="h-4 w-4" />
-                                                                    </Button>
-                                                                    <Button
-                                                                        type="button"
-                                                                        variant="outline"
-                                                                        size="icon"
-                                                                        onClick={() => remove(index)}
-                                                                    >
-                                                                        <Trash2 className="h-4 w-4" />
-                                                                    </Button>
-                                                                </div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
-                                        )}
+                                        <div className="grid grid-cols-2 gap-6">
+                                            <div className="grid gap-2">
+                                                <Label htmlFor="title">Job Title</Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="title"
+                                                    name="title"
+                                                    placeholder="Eg: Software Engineer or Marketing Specialist."
+                                                />
+                                                {errors.title && touched.title && (
+                                                    <p className="text-sm text-red-500 mt-1">
+                                                        {errors.title as string}
+                                                    </p>
+                                                )}
+                                            </div>
+                                            <div >
+                                                <Label htmlFor="employmentDates" >Employment Dates</Label>
+                                                <FromToDatePicker<WorkExperienceForm> values={values} setFieldValue={setFieldValue} involvedKey="employmentDates"  />
+                                                {errors.employmentDates && touched.employmentDates && (
+                                                    <p className="text-sm text-red-500 mt-1">
+                                                        {errors.employmentDates as string}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-6" >
+                                            <div className="">
+                                                <Label htmlFor="companyName">Company Name</Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="companyName"
+                                                    name="companyName"
+                                                    placeholder="Enter Company Name"
+                                                />
+                                                {errors.companyName && touched.companyName && (
+                                                    <p className="text-sm text-red-500 mt-1">
+                                                        {errors.companyName as string}
+                                                    </p>
+                                                )}
+                                            </div>
+                                            <div className="">
+                                                <Label htmlFor="location">Location <span className="text-muted-foreground txt-xs" >Optional</span> </Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="companyName"
+                                                    name="companyName"
+                                                    placeholder="Enter Company Name"
+                                                />
+                                                {errors.location && touched.location && (
+                                                    <p className="text-sm text-red-500 mt-1">
+                                                        {errors.location as string}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-6" >
+                                            <div>
+                                                <Label htmlFor="responsibilities" >Key Responsibilities</Label>
+                                                <FormikFieldArray involvedKey={"responsibilities"} placeholder="Enter responsibility" />
+                                                {errors.responsibilities && touched.responsibilities && (
+                                                    <p className="text-sm text-red-500 mt-1">
+                                                        {errors.responsibilities as string}
+                                                    </p>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <Label htmlFor="achievements" >Key Achievements</Label>
+                                                <FormikFieldArray involvedKey={"achievements"} placeholder="Enter Achievements" />
+                                                {errors.achievements && touched.achievements && (
+                                                    <p className="text-sm text-red-500 mt-1">
+                                                        {errors.achievements as string}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                        
+                                        <Button
+                                            type="button"
+                                           
+                                            className="w-full"
+                                        >
+                        Add Experience
+                                        </Button>
                                     </div>
-                                )}
-                            </FieldArray>
+                                </CardContent>
+                            </div>
                         </Form>
                     )}
                 </Formik>
