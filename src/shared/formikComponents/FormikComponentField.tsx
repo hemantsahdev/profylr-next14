@@ -6,15 +6,20 @@ interface FormikComponentFieldProps<T> {
     name:string
     placeholder:string
     component : React.ComponentType<T>
-    disabled : boolean
     label:string
+    disabled ?: boolean
+    dropdownOptions ?: string[]  //for select dropdown
+    optionalField ?: boolean
+    year ?:boolean  //for date picker
+    month ?:boolean //for date picker
+    day ?:boolean  //for date picker
 }
 
-const FormikComponentField = <T,>({id,name,placeholder,component,disabled,label,...props}:FormikComponentFieldProps<T>)=>{
+const FormikComponentField = <T,>({id,name,placeholder,component,disabled=false,label,optionalField = false ,...props}:FormikComponentFieldProps<T>)=>{
 
     return (
         <>
-            <Label htmlFor={id}> {label} </Label>
+            <Label htmlFor={id}> {label} {optionalField && <span className="text-xs text-muted-foreground" >Optional</span>} </Label>
             <Field
                 component = {component}
                 id = {id}

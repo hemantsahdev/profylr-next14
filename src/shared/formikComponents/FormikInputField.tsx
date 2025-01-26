@@ -4,18 +4,19 @@ import { Field } from "formik";
 import React from "react";
 
 interface FormikInputFieldProps {
-    id:string
-    name:string
-    placeholder:string
-    disabled:boolean
-    label:string
+    id : string
+    name : string
+    placeholder : string
+    disabled ?: boolean
+    optional ?: boolean
+    label : string
 }
 
-const FormikInputField = ({id,name,placeholder,disabled,label}:FormikInputFieldProps)=>{
+const FormikInputField = ({id,name,placeholder,disabled=false,label , optional = false}:FormikInputFieldProps)=>{
     
     return (
         <>
-            <Label htmlFor={id}>{label} </Label>
+            <Label htmlFor={id}>{label} <span className="text-xs text-muted-foreground" >Optional</span> </Label>
             <Field
                 as={Input}
                 id = {id}

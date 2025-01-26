@@ -27,9 +27,10 @@ interface FlexibleDatePickerProps {
   onChange: (date: Date | null) => void
   initialDate?: Date
   disabled? : boolean
+  placeholder ?: string
 }
 
-const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, initialDate, disabled = false}: FlexibleDatePickerProps) =>{
+const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, initialDate, disabled = false , placeholder = "Select a date"}: FlexibleDatePickerProps) =>{
 
     const [date, setDate] = useState<Date | undefined>(initialDate);
 
@@ -115,30 +116,33 @@ const FlexibleDatePicker = ({ year = true, month = true, day = true, onChange, i
     }
 
     return (
-        <Popover>
-            <PopoverTrigger asChild={true}>
-                <Button
-                    variant={"outline"}
-                    className={cn(
-                        "w-[280px] justify-start text-left font-normal",
-                        !date && "text-muted-foreground"
-                    )}
-                    disabled={disabled}
-                >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date ? formatDate() : <span>Pick a date</span>}
-                </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0">
-                <Calendar
-                    mode="single"
-                    selected={date}
-                    onSelect={handleSelect}
-                    initialFocus={true}
-                    disabled={disabled}
-                />
-            </PopoverContent>
-        </Popover>
+        <>
+            <Popover>
+                <PopoverTrigger asChild={true}>
+                    <Button
+                        variant={"outline"}
+                        className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !date && "text-muted-foreground"
+                        )}
+                        disabled={disabled}
+                    >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {date ? formatDate() : <span>{placeholder}</span>}
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                    <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={handleSelect}
+                        initialFocus={true}
+                        disabled={disabled}
+                    />
+                </PopoverContent>
+            </Popover>
+        </>
+
     );
 };
 

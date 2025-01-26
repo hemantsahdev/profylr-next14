@@ -11,21 +11,21 @@ interface FormikDatePickerProps<T>{
     month ?: boolean
     year? : boolean
     disabled? : boolean
+    placeholder ?: string
 }
 
 
-const FormikDatePicker = <T,>({field,form,day,month,year, disabled}:FormikDatePickerProps<T>) => {
+const FormikDatePicker = <T,>({field,form,day,month,year, disabled , placeholder}:FormikDatePickerProps<T>) => {
 
     const handleOnChange = (selectedYearDate:Date | null):void=>{
         const year = selectedYearDate?.getFullYear();
-        console.log(year);
         if(year){
             form.setFieldValue(field.name,year);
         }
     };
 
     return (
-        <FlexibleDatePicker day={day} month={month} year={year} onChange={handleOnChange} disabled={disabled} />
+        <FlexibleDatePicker day={day} month={month} year={year} onChange={handleOnChange} disabled={disabled} placeholder={placeholder} />
     );
 };
 

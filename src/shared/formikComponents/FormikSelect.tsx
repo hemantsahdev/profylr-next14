@@ -5,12 +5,12 @@ import React from "react";
 interface FormikSelectProps <T> {
     field: FieldProps["field"],
     form : FormikProps<T>,
-    options: string[];          // Options for the select dropdown
+    dropdownOptions: string[];          // Options for the select dropdown
     placeholder: string;        // Placeholder text
     disabled? : boolean
 }
 
-const FormikSelect = <T,>({ field, form, options, placeholder , disabled = false }:FormikSelectProps<T>) => {
+const FormikSelect = <T,>({ field, form, dropdownOptions, placeholder , disabled = false }:FormikSelectProps<T>) => {
     return (
         <Select
             value={field.value} // Connect the field's value
@@ -21,7 +21,7 @@ const FormikSelect = <T,>({ field, form, options, placeholder , disabled = false
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent>
-                {options.map((option: string) => (
+                {dropdownOptions.map((option: string) => (
                     <SelectItem key={option} value={option}>
                         {option}
                     </SelectItem>
