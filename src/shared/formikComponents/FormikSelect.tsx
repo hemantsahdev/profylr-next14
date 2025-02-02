@@ -7,14 +7,16 @@ interface FormikSelectProps <T> {
     form : FormikProps<T>,
     dropdownOptions: string[];          // Options for the select dropdown
     placeholder: string;        // Placeholder text
-    disabled? : boolean
+    disabled ?: boolean;
+    onDropdownValueSelected ?: (value:string)=> void //for SELECT dropdown
+    setFieldValueAutomaticallyOfSelect ?: boolean //for SELECT dropdown
 }
 
-const FormikSelect = <T,>({ field, form, dropdownOptions, placeholder , disabled = false }:FormikSelectProps<T>) => {
+const FormikSelect = <T,>({ field, form, dropdownOptions, placeholder , disabled = false , setFieldValueAutomaticallyOfSelect = true , onDropdownValueSelected }:FormikSelectProps<T>) => {
     return (
         <Select
             value={field.value} // Connect the field's value
-            onValueChange={(value) => form.setFieldValue(field.name, value)} // Update Formik state
+            onValueChange={(value) => setFieldValueAutomaticallyOfSelect ? form.setFieldValue(field.name, value) : onDropdownValueSelected ? onDropdownValueSelected(value) : form.setFieldValue(field.name,value) } // Update Formik state
             disabled={disabled}
         >
             <SelectTrigger id={field.name}>

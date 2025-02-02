@@ -39,89 +39,86 @@ const validationSchema = Yup.object().shape({
 const CreateResumeSection = () => {
 
     return (
-        
-        <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={(values) => {
-                console.log(values);
-            }}
-        >
-            {({ values, errors, touched }) => {
-                console.log(values);
+        <div className="w-[90%] h-[90%] p-4 rounded-xl shadow-lg bg-white border border-gray-200 " >
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={(values) => {
+                    console.log(values);
+                }}
+            >
+                {({ values, errors, touched }) => {
+                    console.log(values);
 
-                return (
-                    <Form className="space-y-4">
-                        <div>
+                    return (
+                        <Form className="h-full w-full flex flex-col justify-between">
+                            <div className="space-y-4" >
+                                {/* section name */}
+                                <div>
+                                    <FormikInputField
+                                        id="name"
+                                        name="name"
+                                        label="Section Name"
+                                        placeholder="Enter section name"
+                                    />
+                                </div>
 
-                            <FormikInputField
-                                id="name"
-                                name="name"
-                                label="Section Name"
-                                placeholder="Enter section name"
-                            />
-                        </div>
-
-                        <div>
-                            <FormikInputField
-                                id="description"
-                                name="description"
-                                label="Description"
-                                placeholder="Enter description"
-                            />
-                        </div>
+                                {/* description */}
+                                <div>
+                                    <FormikInputField
+                                        id="description"
+                                        name="description"
+                                        label="Description"
+                                        placeholder="Enter description"
+                                    />
+                                </div>
       
-                        <div className="flex">
-                            <div className="w-[50%]" >
-                                <FormikComponentField
-                                    id="categories"
-                                    name="categories"
-                                    label="Categories"
-                                    component={FormikSelect}
-                                    placeholder="Select categories"
-                                    dropdownOptions={CATEGORIES}
-                                />
-                            </div>
-                            <div className="flex flex-wrap gap-2 mt-2">
-                                {Array.isArray(values.categories) &&
-                      values.categories.length > 0 && 
-                      values.categories.map((category, idx) => (
-                          <Badge key={idx} className="bg-indigo-600 text-white">
-                              {category}
-                          </Badge>
-                      ))}
-                            </div>
-                        </div>
+                                {/* select categories */}
+                                <div className="flex">
+                           
+                                    {/* causing ERROR */}
+                                    <FormikFieldArray
+                                        involvedKey={"categories"}
+                                        placeholder="Select categories"
+                                        dropdownOptions={CATEGORIES}
+                                        showTextField = {false}
+                                        showSelect = {true}
+                                    />
+                                </div>
       
-                        <div>
-                            <FormikComponentField
-                                id="departments"
-                                name="departments"
-                                component={FormikSelect}
-                                placeholder="Select departments"
-                                label="Departments"
-                                dropdownOptions={["HR", "Finance", "Operations"]}
-                            />
-                            <div className="flex flex-wrap gap-2 mt-2">
-                                {Array.isArray(values.departments) &&
+                                {/* select departments */}
+                                <div>
+                                    <FormikComponentField
+                                        id="departments"
+                                        name="departments"
+                                        component={FormikSelect}
+                                        placeholder="Select departments"
+                                        label="Departments"
+                                        dropdownOptions={["HR", "Finance", "Operations"]}
+                                    />
+                                    <div className="flex flex-wrap gap-2 mt-2">
+                                        {Array.isArray(values.departments) &&
                       values.departments.length > 0 &&
                       values.departments.map((department, idx) => (
                           <Badge key={idx} className="bg-green-600 text-white">
                               {department}
                           </Badge>
                       ))}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
       
-                        <Button type="submit" className="w-full">
-                  Submit
-                        </Button>
-                    </Form>
-                );
-            }
+                            <Button type="submit" className="w-full">
+                  Create
+                            </Button>
+                        </Form>
+                    );
+                }
             
-            }
-        </Formik>
+                }
+            </Formik>
+        </div>
+
     );
 };
 

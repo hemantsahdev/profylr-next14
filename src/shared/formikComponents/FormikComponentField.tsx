@@ -9,6 +9,8 @@ interface FormikComponentFieldProps<T> {
     label:string
     disabled ?: boolean
     dropdownOptions ?: string[]  //for SELECT dropdown
+    onDropdownValueSelected ?: (value:string)=> void //for SELECT dropdown
+    setFieldValueAutomaticallyOfSelect ?: boolean //for SELECT dropdown
     optionalField ?: boolean
     year ?:boolean  //for DATE_PICKER
     month ?:boolean //for DATE_PICKER
