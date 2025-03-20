@@ -1,0 +1,1701 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="theme-color" content="#ffffff">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      
+      <title>{{project.seoTitle}}</title>
+      <!-- SEO Description -->
+      <meta name="description" content="{{project.seoDescription}}">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+       
+      
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+      <!-- Performance optimization: Preload critical resources -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+      
+      <!-- Header Scripts -->
+      <script id="header-scripts">
+        // This script tag will be replaced with actual scripts.head content
+        if (window.scripts && window.scripts.head) {
+          document.getElementById('header-scripts').outerHTML = window.scripts.head;
+        }
+      </script>
+
+      <!-- Preconnect -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+      <!-- Font stylesheet -->
+
+      <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  DEFAULT: '{{settings.colors.primary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8', 
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                secondary: {
+                  DEFAULT: '{{settings.colors.secondary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3', 
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                accent: {
+                  DEFAULT: '{{settings.colors.accent}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3', 
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+              },
+              fontFamily: {
+                sans: ['{{settings.fonts.primary}}', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+                body: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      });
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <!-- Dynamic Meta Tags -->
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="keywords" content="{{project.meta.keywords}}">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      <meta name="google-site-verification" content="{{project.meta.googleVerification}}">
+      <meta name="baidu-verification" content="{{project.meta.baiduVerification}}">
+      <meta name="yandex-verification" content="{{project.meta.yandexVerification}}">
+      <meta name="bing-verification" content="{{project.meta.bingVerification}}">
+      <meta property="og:title" content="{{project.meta.ogTitle}}">
+      <meta property="og:description" content="{{project.meta.ogDescription}}">
+      <meta property="og:image" content="{{project.meta.ogImage}}">
+      <meta property="og:type" content="website">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="{{project.name}}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="{{project.meta.ogTitle}}">
+      <meta name="twitter:description" content="{{project.meta.ogDescription}}">
+      <meta name="twitter:image" content="{{project.meta.ogImage}}">
+    
+      
+      <link rel="icon" type="image/x-icon" href="{{settings.favicon}}">
+      
+      <style>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: {{settings.fonts.primary}}, Inter, system-ui, sans-serif;
+        }
+        body {
+          font-family: {{settings.fonts.secondary}}, Inter, system-ui, sans-serif;
+        }
+      </style>
+   </head>
+   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
+      <!-- Skip to main content link for accessibility -->
+      <a href="#main-content" 
+         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
+         Skip to main content
+      </a>
+
+      <!-- Header -->
+      <header class="relative z-50 bg-white dark:bg-gray-900">
+        <!-- Header content goes here -->
+      </header>
+
+      <!-- Main content area -->
+      <main id="main-content" class="flex-1 relative h-full">
+        <!-- Content will be injected here -->
+      </main>
+
+      <!-- {bodyScripts} -->
+      
+
+   </body>
+</html><script>window.projectId = "a5c96291-9c3c-44ba-bd1a-10f3811993a6";</script><div id='RolloutPageContent'><element id="5fc96e87-f9ef-4bcc-a253-85543f5a2182" data-section-id="5fc96e87-f9ef-4bcc-a253-85543f5a2182">
+
+
+<div id="root">
+  <header id="header" class="relative bg-neutral-900 h-screen">
+    <!-- Particle canvas -->
+    <canvas id="particleCanvas" class="absolute inset-0 w-full h-full"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="relative z-50 bg-neutral-900/80 backdrop-blur-lg">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="/" class="text-2xl font-bold font-[Rajdhani] text-white">
+            ResumeAI
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden lg:flex items-center space-x-8">
+            <a href="/" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              Home
+            </a>
+            <a href="/ai-builder" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              AI Builder
+            </a>
+            <a href="/features" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              Features
+            </a>
+            <a href="/job-tracker" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              Job Tracker
+            </a>
+            <a href="/browser-extension" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              Extension
+            </a>
+            <a href="/pricing" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              Pricing
+            </a>
+            <a href="/contact" class="text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+              Contact
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button id="menuBtn" class="lg:hidden text-gray-300 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden lg:hidden bg-neutral-900/95 backdrop-blur-lg">
+        <div class="px-4 py-4 space-y-4">
+          <a href="/" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            Home
+          </a>
+          <a href="/ai-builder" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            AI Builder
+          </a>
+          <a href="/features" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            Features
+          </a>
+          <a href="/job-tracker" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            Job Tracker
+          </a>
+          <a href="/browser-extension" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            Extension
+          </a>
+          <a href="/pricing" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            Pricing
+          </a>
+          <a href="/contact" class="block text-gray-300 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 h-[calc(100vh-5rem)] flex items-center">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl animate__animated animate__fadeIn">
+          <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 font-[Rajdhani]">
+            Next-Gen Resume Builder
+            <span class="text-[#FF5722]">Powered by AI</span>
+          </h1>
+          <p class="text-xl text-gray-300 mb-8 font-[Exo2]">
+            Create stunning resumes with the power of artificial intelligence. Stand out from the crowd with personalized, ATS-optimized resumes.
+          </p>
+          <button class="animate__animated animate__pulse animate__infinite bg-[#FF5722] hover:bg-[#FF7043] text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 font-[Orbitron] shadow-[0_0_15px_rgba(255,87,34,0.5)]">
+            Get Started Free
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Particle animation
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.fillStyle = 'rgba(255, 87, 34, 0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (let particle of particles) {
+        particle.update();
+        particle.draw();
+      }
+      
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</div>
+</element><element id="a4177715-04db-442c-a913-6ee9f1423f66" data-section-id="a4177715-04db-442c-a913-6ee9f1423f66">
+
+
+<div id="root">
+  <section id="hero" class="relative min-h-screen bg-neutral-900 overflow-hidden">
+    <!-- Animated background canvas -->
+    <canvas id="heroCanvas" class="absolute inset-0 w-full h-full"></canvas>
+    
+    <!-- Mouse trail canvas -->
+    <canvas id="trailCanvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto px-6 h-screen flex items-center">
+      <div class="max-w-4xl animate__animated animate__fadeIn">
+        <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 font-[Rajdhani] tracking-tight leading-tight">
+          Build Your Future With
+          <span class="bg-gradient-to-r from-[#FF5722] to-[#4CAF50] text-transparent bg-clip-text">AI-Powered</span>
+          Resumes
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-300 mb-12 font-[Exo2] max-w-2xl">
+          Transform your career with our next-generation resume builder. Harness AI to create stunning, ATS-optimized resumes that stand out.
+        </p>
+
+        <div class="flex gap-6 items-center">
+          <button id="ctaButton" class="group relative px-8 py-4 bg-transparent border-2 border-[#FF5722] rounded-lg overflow-hidden">
+            <span class="relative z-10 text-white font-[Orbitron] text-lg font-bold group-hover:text-black transition-colors duration-300">
+              Start Building Free
+            </span>
+            <div class="absolute inset-0 bg-[#FF5722] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </button>
+
+          <a href="#demo" class="text-[#FF5722] hover:text-white transition-colors duration-300 font-[Orbitron] text-lg flex items-center gap-2">
+            Watch Demo
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating elements -->
+    <div class="absolute top-1/4 right-10 w-32 h-32 bg-gradient-to-r from-[#FF5722]/20 to-transparent rounded-full blur-xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 left-10 w-40 h-40 bg-gradient-to-r from-[#4CAF50]/20 to-transparent rounded-full blur-xl animate-pulse delay-700"></div>
+  </section>
+
+  <script>
+    // Hero Canvas Animation
+    const heroCanvas = document.getElementById('heroCanvas');
+    const heroCtx = heroCanvas.getContext('2d');
+    
+    heroCanvas.width = window.innerWidth;
+    heroCanvas.height = window.innerHeight;
+
+    class Node {
+      constructor() {
+        this.x = Math.random() * heroCanvas.width;
+        this.y = Math.random() * heroCanvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.connections = [];
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > heroCanvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > heroCanvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        heroCtx.fillStyle = '#FF5722';
+        heroCtx.beginPath();
+        heroCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        heroCtx.fill();
+      }
+    }
+
+    const nodes = Array.from({ length: 50 }, () => new Node());
+
+    function drawConnections() {
+      nodes.forEach(node => {
+        nodes.forEach(otherNode => {
+          const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
+          if (distance < 150) {
+            heroCtx.strokeStyle = `rgba(255, 87, 34, ${1 - distance / 150})`;
+            heroCtx.lineWidth = 0.5;
+            heroCtx.beginPath();
+            heroCtx.moveTo(node.x, node.y);
+            heroCtx.lineTo(otherNode.x, otherNode.y);
+            heroCtx.stroke();
+          }
+        });
+      });
+    }
+
+    function animate() {
+      heroCtx.fillStyle = 'rgba(23, 23, 23, 0.1)';
+      heroCtx.fillRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+      nodes.forEach(node => {
+        node.update();
+        node.draw();
+      });
+
+      drawConnections();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Mouse trail effect
+    const trailCanvas = document.getElementById('trailCanvas');
+    const trailCtx = trailCanvas.getContext('2d');
+
+    trailCanvas.width = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
+
+    let mouse = { x: 0, y: 0 };
+    let points = [];
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      points.push({ x: mouse.x, y: mouse.y });
+      if (points.length > 50) points.shift();
+    });
+
+    function drawTrail() {
+      trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+      
+      for (let i = 0; i < points.length - 1; i++) {
+        const gradient = trailCtx.createLinearGradient(
+          points[i].x, points[i].y, 
+          points[i + 1].x, points[i + 1].y
+        );
+        
+        gradient.addColorStop(0, `rgba(255, 87, 34, ${i / points.length})`);
+        gradient.addColorStop(1, `rgba(76, 175, 80, ${i / points.length})`);
+
+        trailCtx.beginPath();
+        trailCtx.strokeStyle = gradient;
+        trailCtx.lineWidth = i / 10;
+        trailCtx.moveTo(points[i].x, points[i].y);
+        trailCtx.lineTo(points[i + 1].x, points[i + 1].y);
+        trailCtx.stroke();
+      }
+
+      requestAnimationFrame(drawTrail);
+    }
+
+    drawTrail();
+
+    window.addEventListener('resize', () => {
+      heroCanvas.width = window.innerWidth;
+      heroCanvas.height = window.innerHeight;
+      trailCanvas.width = window.innerWidth;
+      trailCanvas.height = window.innerHeight;
+    });
+  </script>
+</div>
+</element><element id="e1131f5f-bd4f-44f4-bd30-02143db3f085" data-section-id="e1131f5f-bd4f-44f4-bd30-02143db3f085">
+
+
+<div id="root">
+  <section id="aiBuilder" class="relative min-h-screen bg-neutral-800 py-20 overflow-hidden">
+    <!-- Neural Network Canvas -->
+    <canvas id="networkCanvas" class="absolute inset-0 w-full h-full"></canvas>
+
+    <div class="relative z-10 container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <!-- Content Side -->
+        <div class="lg:w-1/2 animate__animated animate__fadeInLeft">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-[Rajdhani]">
+            AI-Powered Resume
+            <span class="text-[#FF5722]">Generation</span>
+          </h2>
+          
+          <p class="text-gray-300 text-lg mb-8 font-[Exo2]">
+            Our advanced AI analyzes industry trends and job requirements to create perfectly tailored resumes. Watch in real-time as our neural network crafts your professional story.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-center gap-4 text-gray-300">
+              <div class="w-12 h-12 rounded-lg bg-[#FF5722]/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[#FF5722]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <span class="font-[ChakraPetch]">Real-time AI Processing</span>
+            </div>
+
+            <div class="flex items-center gap-4 text-gray-300">
+              <div class="w-12 h-12 rounded-lg bg-[#4CAF50]/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-[#4CAF50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                </svg>
+              </div>
+              <span class="font-[ChakraPetch]">ATS-Optimized Output</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Side -->
+        <div class="lg:w-1/2 animate__animated animate__fadeInRight">
+          <div class="relative backdrop-blur-xl bg-neutral-900/50 p-6 rounded-xl border border-neutral-700 shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#FF5722]/10 to-[#4CAF50]/10 rounded-xl"></div>
+            
+            <!-- Resume Preview -->
+            <div id="resumePreview" class="relative space-y-4 min-h-[400px]">
+              <div class="h-8 w-3/4 bg-neutral-700/50 rounded animate-pulse"></div>
+              <div class="h-4 w-1/2 bg-neutral-700/50 rounded animate-pulse"></div>
+              <div class="h-4 w-5/6 bg-neutral-700/50 rounded animate-pulse"></div>
+              <div class="h-4 w-4/6 bg-neutral-700/50 rounded animate-pulse"></div>
+              <div class="h-20 w-full bg-neutral-700/50 rounded animate-pulse mt-6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Neural Network Animation
+    const networkCanvas = document.getElementById('networkCanvas');
+    const netCtx = networkCanvas.getContext('2d');
+
+    networkCanvas.width = window.innerWidth;
+    networkCanvas.height = window.innerHeight;
+
+    class NeuralNode {
+      constructor() {
+        this.x = Math.random() * networkCanvas.width;
+        this.y = Math.random() * networkCanvas.height;
+        this.size = Math.random() * 3 + 2;
+        this.baseSize = this.size;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+        this.connections = [];
+        this.pulsePhase = Math.random() * Math.PI * 2;
+        this.color = Math.random() > 0.5 ? '#FF5722' : '#4CAF50';
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > networkCanvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > networkCanvas.height) this.speedY *= -1;
+
+        this.pulsePhase += 0.05;
+        this.size = this.baseSize + Math.sin(this.pulsePhase) * 1;
+      }
+
+      draw() {
+        netCtx.beginPath();
+        netCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        netCtx.fillStyle = this.color;
+        netCtx.fill();
+
+        netCtx.beginPath();
+        netCtx.arc(this.x, this.y, this.size + 4, 0, Math.PI * 2);
+        netCtx.strokeStyle = `${this.color}33`;
+        netCtx.stroke();
+      }
+    }
+
+    const nodes = Array.from({ length: 30 }, () => new NeuralNode());
+
+    function drawConnections() {
+      nodes.forEach(node => {
+        nodes.forEach(otherNode => {
+          const distance = Math.hypot(node.x - otherNode.x, node.y - otherNode.y);
+          if (distance < 200) {
+            netCtx.beginPath();
+            netCtx.moveTo(node.x, node.y);
+            netCtx.lineTo(otherNode.x, otherNode.y);
+            netCtx.strokeStyle = `${node.color}${Math.floor((1 - distance / 200) * 255).toString(16).padStart(2, '0')}`;
+            netCtx.lineWidth = 1;
+            netCtx.stroke();
+          }
+        });
+      });
+    }
+
+    function animate() {
+      netCtx.fillStyle = 'rgba(23, 23, 23, 0.1)';
+      netCtx.fillRect(0, 0, networkCanvas.width, networkCanvas.height);
+
+      nodes.forEach(node => {
+        node.update();
+        node.draw();
+      });
+
+      drawConnections();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      networkCanvas.width = window.innerWidth;
+      networkCanvas.height = window.innerHeight;
+    });
+  </script>
+</div>
+</element><element id="d4511908-bda0-41d2-8d3a-0bc711c36d00" data-section-id="d4511908-bda0-41d2-8d3a-0bc711c36d00">
+
+
+<div id="root">
+  <section id="features" class="relative min-h-screen bg-neutral-900 py-20 overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900"></div>
+    
+    <div class="relative z-10 container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-[Rajdhani]">
+          Powerful <span class="text-[#FF5722]">Features</span>
+        </h2>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto font-[Exo2]">
+          Experience next-generation resume building with our cutting-edge features
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature Card 1 -->
+        <div class="feature-card group backdrop-blur-xl bg-neutral-800/50 rounded-xl p-6 border border-neutral-700 hover:border-[#FF5722] transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-14 h-14 rounded-lg bg-[#FF5722]/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-[#FF5722]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 font-[Orbitron]">AI-Powered Writing</h3>
+          <p class="text-gray-300 font-[Exo2]">Smart content generation that adapts to your experience and industry standards.</p>
+        </div>
+
+        <!-- Feature Card 2 -->
+        <div class="feature-card group backdrop-blur-xl bg-neutral-800/50 rounded-xl p-6 border border-neutral-700 hover:border-[#4CAF50] transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-14 h-14 rounded-lg bg-[#4CAF50]/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-[#4CAF50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 font-[Orbitron]">ATS Optimization</h3>
+          <p class="text-gray-300 font-[Exo2]">Guaranteed passage through Applicant Tracking Systems with smart keyword optimization.</p>
+        </div>
+
+        <!-- Feature Card 3 -->
+        <div class="feature-card group backdrop-blur-xl bg-neutral-800/50 rounded-xl p-6 border border-neutral-700 hover:border-[#FF5722] transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-14 h-14 rounded-lg bg-[#FF5722]/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-[#FF5722]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 font-[Orbitron]">Dynamic Templates</h3>
+          <p class="text-gray-300 font-[Exo2]">Professional templates that adapt to your content and industry requirements.</p>
+        </div>
+
+        <!-- Feature Card 4 -->
+        <div class="feature-card group backdrop-blur-xl bg-neutral-800/50 rounded-xl p-6 border border-neutral-700 hover:border-[#4CAF50] transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-14 h-14 rounded-lg bg-[#4CAF50]/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-[#4CAF50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 font-[Orbitron]">One-Click Apply</h3>
+          <p class="text-gray-300 font-[Exo2]">Seamlessly apply to jobs with automatically formatted resumes for each application.</p>
+        </div>
+
+        <!-- Feature Card 5 -->
+        <div class="feature-card group backdrop-blur-xl bg-neutral-800/50 rounded-xl p-6 border border-neutral-700 hover:border-[#FF5722] transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-14 h-14 rounded-lg bg-[#FF5722]/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-[#FF5722]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 font-[Orbitron]">Analytics Dashboard</h3>
+          <p class="text-gray-300 font-[Exo2]">Track your application performance with detailed analytics and insights.</p>
+        </div>
+
+        <!-- Feature Card 6 -->
+        <div class="feature-card group backdrop-blur-xl bg-neutral-800/50 rounded-xl p-6 border border-neutral-700 hover:border-[#4CAF50] transition-all duration-300 transform hover:-translate-y-2">
+          <div class="w-14 h-14 rounded-lg bg-[#4CAF50]/20 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-[#4CAF50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3 font-[Orbitron]">Smart Integration</h3>
+          <p class="text-gray-300 font-[Exo2]">Seamlessly sync with LinkedIn and other professional networks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Parallax effect for cards
+    document.addEventListener('mousemove', (e) => {
+      const cards = document.querySelectorAll('.feature-card');
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardX = rect.left + rect.width / 2;
+        const cardY = rect.top + rect.height / 2;
+
+        const angleX = (mouseY - cardY) / 30;
+        const angleY = (mouseX - cardX) / -30;
+
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+      });
+    });
+
+    // Reset card position when mouse leaves
+    document.addEventListener('mouseleave', () => {
+      const cards = document.querySelectorAll('.feature-card');
+      cards.forEach(card => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+      });
+    });
+  </script>
+</div>
+</element><element id="c1644ade-95d2-4c41-8d1f-63a87e0139c1" data-section-id="c1644ade-95d2-4c41-8d1f-63a87e0139c1">
+
+
+<div id="root">
+  <section id="jobTracker" class="relative min-h-screen bg-neutral-800 py-20 overflow-hidden">
+    <div class="relative z-10 container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-16 font-[Rajdhani] text-center">
+        Track Your <span class="text-[#FF5722]">Career Journey</span>
+      </h2>
+
+      <!-- Timeline Section -->
+      <div class="timeline-container relative max-w-4xl mx-auto">
+        <!-- Glowing Timeline Line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#FF5722] to-[#4CAF50] rounded-full glow-line"></div>
+
+        <!-- Timeline Items -->
+        <div class="timeline-items space-y-24">
+          <!-- Item 1 -->
+          <div class="timeline-item group relative flex items-center" data-aos="fade-up">
+            <div class="w-1/2 pr-12 text-right">
+              <h3 class="text-2xl font-[Orbitron] text-white mb-2">Resume Created</h3>
+              <p class="text-gray-300 font-[Exo2]">AI-optimized resume ready for submission</p>
+            </div>
+            <div class="timeline-marker absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#FF5722] rounded-full group-hover:scale-125 transition-transform duration-300 cursor-pointer glow-marker"></div>
+            <div class="w-1/2 pl-12"></div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item group relative flex items-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-1/2 pr-12"></div>
+            <div class="timeline-marker absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#4CAF50] rounded-full group-hover:scale-125 transition-transform duration-300 cursor-pointer glow-marker"></div>
+            <div class="w-1/2 pl-12">
+              <h3 class="text-2xl font-[Orbitron] text-white mb-2">Application Submitted</h3>
+              <p class="text-gray-300 font-[Exo2]">Automatically tracked and monitored</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item group relative flex items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-1/2 pr-12 text-right">
+              <h3 class="text-2xl font-[Orbitron] text-white mb-2">Interview Scheduled</h3>
+              <p class="text-gray-300 font-[Exo2]">AI-powered interview preparation</p>
+            </div>
+            <div class="timeline-marker absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#FF5722] rounded-full group-hover:scale-125 transition-transform duration-300 cursor-pointer glow-marker"></div>
+            <div class="w-1/2 pl-12"></div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-item group relative flex items-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-1/2 pr-12"></div>
+            <div class="timeline-marker absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#4CAF50] rounded-full group-hover:scale-125 transition-transform duration-300 cursor-pointer glow-marker"></div>
+            <div class="w-1/2 pl-12">
+              <h3 class="text-2xl font-[Orbitron] text-white mb-2">Offer Received</h3>
+              <p class="text-gray-300 font-[Exo2]">Celebration time! 🎉</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Info Cards -->
+      <div id="infoCards" class="fixed inset-0 pointer-events-none"></div>
+    </div>
+  </section>
+
+  <style>
+    .glow-line {
+      box-shadow: 0 0 15px #FF5722, 0 0 30px #4CAF50;
+    }
+    
+    .glow-marker {
+      box-shadow: 0 0 10px currentColor;
+    }
+    
+    .timeline-marker {
+      transition: all 0.3s ease;
+    }
+    
+    .info-card {
+      background: rgba(23, 23, 23, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 87, 34, 0.2);
+      box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+    }
+  </style>
+
+  <script>
+    // Timeline marker click handler
+    document.querySelectorAll('.timeline-marker').forEach(marker => {
+      marker.addEventListener('click', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        createInfoCard(e.clientX, e.clientY, marker.parentElement);
+      });
+    });
+
+    function createInfoCard(x, y, item) {
+      const card = document.createElement('div');
+      card.className = 'info-card fixed z-50 p-6 rounded-xl transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto animate__animated animate__fadeInUp';
+      card.style.left = `${x}px`;
+      card.style.top = `${y}px`;
+      
+      const title = item.querySelector('h3').textContent;
+      const description = item.querySelector('p').textContent;
+      
+      card.innerHTML = `
+        <h4 class="text-xl font-[Orbitron] text-white mb-3">${title}</h4>
+        <p class="text-gray-300 font-[Exo2] mb-4">${description}</p>
+        <div class="flex justify-end">
+          <button class="text-sm text-[#FF5722] hover:text-white transition-colors duration-300 font-[Orbitron]">Close</button>
+        </div>
+      `;
+
+      document.getElementById('infoCards').appendChild(card);
+
+      card.querySelector('button').addEventListener('click', () => {
+        card.classList.remove('animate__fadeInUp');
+        card.classList.add('animate__fadeOutDown');
+        setTimeout(() => card.remove(), 500);
+      });
+    }
+
+    // Add AOS initialization
+    AOS.init({
+      duration: 1000,
+      once: true,
+      mirror: false
+    });
+  </script>
+</div>
+</element><element id="f7ca8b96-33e9-4a46-a276-ec739eeaad29" data-section-id="f7ca8b96-33e9-4a46-a276-ec739eeaad29">
+
+
+<div id="root">
+  <section id="browserExtension" class="relative min-h-screen bg-neutral-900 py-20 overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-16 font-[Rajdhani] text-center">
+        Smart <span class="text-[#FF5722]">Browser Extension</span>
+      </h2>
+
+      <!-- 3D Card Container -->
+      <div class="job-cards-container relative perspective-1000 h-[600px]">
+        <!-- Rotating Dashboard Preview -->
+        <div class="dashboard-preview absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
+          <div class="backdrop-blur-xl bg-neutral-800/50 p-8 rounded-2xl border border-neutral-700 shadow-2xl transform rotate3d(1, 1, 0, 15deg)">
+            <div class="grid grid-cols-2 gap-6">
+              <!-- Job Listings -->
+              <div class="floating-card space-y-4" data-offset="5">
+                <div class="job-card bg-neutral-700/30 p-6 rounded-xl border border-[#FF5722]/20 hover:border-[#FF5722] transition-all duration-300">
+                  <h3 class="text-xl font-[Orbitron] text-white mb-2">Senior Developer</h3>
+                  <p class="text-gray-300 font-[Exo2]">TechCorp Industries</p>
+                  <div class="flex justify-between items-center mt-4">
+                    <span class="text-[#4CAF50] font-[ChakraPetch]">$120k - $150k</span>
+                    <span class="text-[#FF5722]">Remote</span>
+                  </div>
+                </div>
+
+                <div class="job-card bg-neutral-700/30 p-6 rounded-xl border border-[#4CAF50]/20 hover:border-[#4CAF50] transition-all duration-300">
+                  <h3 class="text-xl font-[Orbitron] text-white mb-2">UX Designer</h3>
+                  <p class="text-gray-300 font-[Exo2]">Design Studios</p>
+                  <div class="flex justify-between items-center mt-4">
+                    <span class="text-[#4CAF50] font-[ChakraPetch]">$90k - $110k</span>
+                    <span class="text-[#FF5722]">Hybrid</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stats Dashboard -->
+              <div class="floating-card" data-offset="-5">
+                <div class="stats-container space-y-6">
+                  <div class="stat-card bg-neutral-700/30 p-6 rounded-xl border border-[#FF5722]/20">
+                    <h4 class="text-lg font-[ChakraPetch] text-gray-300 mb-2">Applications</h4>
+                    <div class="text-3xl font-[Orbitron] text-white">
+                      <span class="text-[#FF5722]">24</span> / 30
+                    </div>
+                  </div>
+
+                  <div class="stat-card bg-neutral-700/30 p-6 rounded-xl border border-[#4CAF50]/20">
+                    <h4 class="text-lg font-[ChakraPetch] text-gray-300 mb-2">Response Rate</h4>
+                    <div class="text-3xl font-[Orbitron] text-white">
+                      <span class="text-[#4CAF50]">75</span>%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features List -->
+      <div class="mt-20 grid md:grid-cols-3 gap-8 text-center">
+        <div class="feature-item">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-[#FF5722]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#FF5722]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-[Orbitron] text-white mb-2">One-Click Apply</h3>
+          <p class="text-gray-300 font-[Exo2]">Apply to jobs instantly with your AI-optimized resume</p>
+        </div>
+
+        <div class="feature-item">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-[#4CAF50]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#4CAF50]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-[Orbitron] text-white mb-2">Smart Tracking</h3>
+          <p class="text-gray-300 font-[Exo2]">Automated application tracking and status updates</p>
+        </div>
+
+        <div class="feature-item">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-[#FF5722]/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#FF5722]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-[Orbitron] text-white mb-2">Analytics</h3>
+          <p class="text-gray-300 font-[Exo2]">Real-time insights and performance metrics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Parallax effect for floating cards
+    document.addEventListener('mousemove', (e) => {
+      const cards = document.querySelectorAll('.floating-card');
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+
+      cards.forEach(card => {
+        const offset = card.getAttribute('data-offset');
+        card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateZ(${offset}px)`;
+      });
+    });
+
+    // Job cards fly-in animation
+    const jobCards = document.querySelectorAll('.job-card');
+    jobCards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateX(-100px)';
+      
+      setTimeout(() => {
+        card.style.transition = 'all 0.6s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateX(0)';
+      }, index * 200);
+    });
+
+    // Reset transforms when mouse leaves
+    document.addEventListener('mouseleave', () => {
+      const cards = document.querySelectorAll('.floating-card');
+      cards.forEach(card => {
+        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      });
+    });
+  </script>
+</div>
+</element><element id="f343bcfe-be32-48ab-87b0-4c9e34c3326d" data-section-id="f343bcfe-be32-48ab-87b0-4c9e34c3326d">
+
+
+<div id="root">
+  <section id="pricing" class="relative min-h-screen bg-neutral-800 py-20 overflow-hidden">
+    <!-- Floating Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <canvas id="pricingCanvas" class="absolute inset-0"></canvas>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-16 font-[Rajdhani] text-center">
+        Choose Your <span class="text-[#FF5722]">Plan</span>
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Free Plan -->
+        <div class="pricing-card group backdrop-blur-xl bg-neutral-900/50 rounded-2xl p-8 border border-neutral-700 hover:border-[#FF5722] transition-all duration-300 transform hover:-translate-y-2">
+          <h3 class="text-2xl font-[Orbitron] text-white mb-4">Starter</h3>
+          <div class="text-4xl font-[Rajdhani] text-white mb-6">
+            <span class="text-[#FF5722]">Free</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-gray-300 font-[Exo2]">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Basic Resume Builder
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              3 Templates
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Basic AI Suggestions
+            </li>
+          </ul>
+          <button class="w-full py-4 px-6 rounded-lg bg-neutral-700 hover:bg-[#FF5722] text-white font-[Orbitron] transition-all duration-300 transform hover:scale-105">
+            Get Started
+          </button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card group backdrop-blur-xl bg-neutral-900/50 rounded-2xl p-8 border border-[#FF5722] transform scale-105 relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#FF5722] text-white px-4 py-1 rounded-full font-[Orbitron] text-sm">
+            Popular
+          </div>
+          <h3 class="text-2xl font-[Orbitron] text-white mb-4">Pro</h3>
+          <div class="text-4xl font-[Rajdhani] text-white mb-6">
+            <span class="text-[#FF5722]">$19</span>
+            <span class="text-xl text-gray-400">/mo</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-gray-300 font-[Exo2]">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Advanced AI Resume Builder
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              20+ Premium Templates
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Job Tracking Dashboard
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Browser Extension
+            </li>
+          </ul>
+          <button class="w-full py-4 px-6 rounded-lg bg-[#FF5722] hover:bg-[#FF7043] text-white font-[Orbitron] transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(255,87,34,0.5)]">
+            Get Pro
+          </button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card group backdrop-blur-xl bg-neutral-900/50 rounded-2xl p-8 border border-neutral-700 hover:border-[#FF5722] transition-all duration-300 transform hover:-translate-y-2">
+          <h3 class="text-2xl font-[Orbitron] text-white mb-4">Enterprise</h3>
+          <div class="text-4xl font-[Rajdhani] text-white mb-6">
+            <span class="text-[#FF5722]">$49</span>
+            <span class="text-xl text-gray-400">/mo</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-gray-300 font-[Exo2]">
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Everything in Pro
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Custom Branding
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              API Access
+            </li>
+            <li class="flex items-center">
+              <svg class="w-5 h-5 text-[#4CAF50] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Dedicated Support
+            </li>
+          </ul>
+          <button class="w-full py-4 px-6 rounded-lg bg-neutral-700 hover:bg-[#FF5722] text-white font-[Orbitron] transition-all duration-300 transform hover:scale-105">
+            Contact Sales
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Initialize floating background elements
+    const canvas = document.getElementById('pricingCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class FloatingParticle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+        this.color = Math.random() > 0.5 ? '#FF5722' : '#4CAF50';
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const particles = Array.from({ length: 50 }, () => new FloatingParticle());
+
+    function animate() {
+      ctx.fillStyle = 'rgba(23, 23, 23, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</div>
+</element><element id="ac10e119-de37-45b9-bf39-2fa2ed44beb6" data-section-id="ac10e119-de37-45b9-bf39-2fa2ed44beb6">
+
+
+<div id="root">
+  <section id="testimonials" class="relative min-h-screen bg-neutral-900 py-20 overflow-hidden">
+    <!-- Animated background -->
+    <canvas id="testimonialCanvas" class="absolute inset-0"></canvas>
+
+    <div class="relative z-10 container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-16 font-[Rajdhani] text-center">
+        Success <span class="text-[#FF5722]">Stories</span>
+      </h2>
+
+      <div class="testimonial-carousel relative max-w-5xl mx-auto">
+        <div class="testimonials-wrapper">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card backdrop-blur-xl bg-neutral-800/30 p-8 rounded-2xl border border-neutral-700 mb-8">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+              <div class="testimonial-content">
+                <div class="text-[#FF5722] mb-6">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+                <p class="text-gray-300 text-lg mb-6 font-[Exo2]">
+                  "The AI-powered resume builder transformed my job search. Landed my dream role at a tech giant within weeks!"
+                </p>
+                <div class="border-t border-neutral-700 pt-6">
+                  <h4 class="text-white text-xl font-[Orbitron] mb-1">Sarah Chen</h4>
+                  <p class="text-[#4CAF50] font-[ChakraPetch]">Senior Software Engineer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card backdrop-blur-xl bg-neutral-800/30 p-8 rounded-2xl border border-neutral-700 mb-8">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+              <div class="testimonial-content">
+                <div class="text-[#4CAF50] mb-6">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+                <p class="text-gray-300 text-lg mb-6 font-[Exo2]">
+                  "The job tracking feature is incredible. It helped me manage multiple applications effortlessly and land more interviews."
+                </p>
+                <div class="border-t border-neutral-700 pt-6">
+                  <h4 class="text-white text-xl font-[Orbitron] mb-1">Marcus Johnson</h4>
+                  <p class="text-[#FF5722] font-[ChakraPetch]">Product Manager</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card backdrop-blur-xl bg-neutral-800/30 p-8 rounded-2xl border border-neutral-700">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+              <div class="testimonial-content">
+                <div class="text-[#FF5722] mb-6">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+                <p class="text-gray-300 text-lg mb-6 font-[Exo2]">
+                  "The browser extension is a game-changer. It streamlined my entire job search process. Highly recommended!"
+                </p>
+                <div class="border-t border-neutral-700 pt-6">
+                  <h4 class="text-white text-xl font-[Orbitron] mb-1">Emily Rodriguez</h4>
+                  <p class="text-[#4CAF50] font-[ChakraPetch]">UX Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="flex justify-center gap-4 mt-8">
+          <button class="w-3 h-3 rounded-full bg-[#FF5722] opacity-50 hover:opacity-100 transition-opacity duration-300 dot active"></button>
+          <button class="w-3 h-3 rounded-full bg-[#FF5722] opacity-50 hover:opacity-100 transition-opacity duration-300 dot"></button>
+          <button class="w-3 h-3 rounded-full bg-[#FF5722] opacity-50 hover:opacity-100 transition-opacity duration-300 dot"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Animated background
+    const canvas = document.getElementById('testimonialCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Star {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.color = Math.random() > 0.5 ? '#FF5722' : '#4CAF50';
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const stars = Array.from({ length: 100 }, () => new Star());
+
+    function animate() {
+      ctx.fillStyle = 'rgba(23, 23, 23, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Testimonial carousel
+    const dots = document.querySelectorAll('.dot');
+    const cards = document.querySelectorAll('.testimonial-card');
+    let currentIndex = 0;
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    function updateCarousel() {
+      cards.forEach((card, index) => {
+        card.style.display = index === currentIndex ? 'block' : 'none';
+      });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    // Initialize carousel
+    updateCarousel();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</div>
+</element><element id="583f3259-f68d-4c74-9902-d5bce4c32762" data-section-id="583f3259-f68d-4c74-9902-d5bce4c32762">
+
+
+<div id="root">
+  <section id="callToAction" class="relative min-h-screen bg-neutral-900 py-20 overflow-hidden">
+    <!-- Particle system canvas -->
+    <canvas id="particleCanvas" class="absolute inset-0"></canvas>
+    
+    <!-- Glowing pathway elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-1/2 left-1/4 w-32 h-1 bg-gradient-to-r from-[#FF5722] to-transparent transform rotate-45 blur-sm"></div>
+      <div class="absolute top-1/3 right-1/4 w-32 h-1 bg-gradient-to-l from-[#4CAF50] to-transparent transform -rotate-45 blur-sm"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl md:text-6xl font-bold text-white mb-8 font-[Rajdhani] animate__animated animate__fadeIn">
+          Build Your <span class="text-[#FF5722]">Future</span> Today
+        </h2>
+        
+        <p class="text-xl text-gray-300 mb-12 font-[Exo2] animate__animated animate__fadeIn animate__delay-1s">
+          Join thousands of professionals who have transformed their careers with our AI-powered resume builder.
+        </p>
+
+        <div class="relative inline-block group animate__animated animate__fadeIn animate__delay-2s">
+          <!-- Energy trails container -->
+          <div class="absolute inset-0 transform group-hover:scale-110 transition-transform duration-300">
+            <div class="absolute inset-0 bg-[#FF5722] opacity-20 blur-xl rounded-lg"></div>
+          </div>
+
+          <!-- CTA Button -->
+          <button id="ctaButton" class="relative px-12 py-6 bg-[#FF5722] hover:bg-[#FF7043] rounded-lg transform hover:scale-105 transition-all duration-300 group overflow-hidden">
+            <span class="relative z-10 text-2xl text-white font-[Orbitron] tracking-wider">
+              Get Started Free
+            </span>
+            
+            <!-- Particle burst container -->
+            <div class="particle-burst absolute inset-0 pointer-events-none"></div>
+          </button>
+        </div>
+
+        <p class="mt-8 text-gray-400 font-[ChakraPetch] animate__animated animate__fadeIn animate__delay-3s">
+          No credit card required • Free 14-day trial
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Particle system
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 3;
+        this.speedX = Math.random() * 4 - 2;
+        this.speedY = Math.random() * 4 - 2;
+        this.color = color;
+        this.life = 1;
+        this.decay = 0.02;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= this.decay;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `${this.color}${Math.floor(this.life * 255).toString(16).padStart(2, '0')}`;
+        ctx.fill();
+      }
+    }
+
+    const particles = [];
+
+    function animate() {
+      ctx.fillStyle = 'rgba(23, 23, 23, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+
+        if (particles[i].life <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Button hover effect
+    const ctaButton = document.getElementById('ctaButton');
+    
+    ctaButton.addEventListener('mousemove', (e) => {
+      const rect = ctaButton.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      for (let i = 0; i < 2; i++) {
+        particles.push(new Particle(
+          x + rect.left,
+          y + rect.top,
+          Math.random() > 0.5 ? '#FF5722' : '#4CAF50'
+        ));
+      }
+    });
+
+    ctaButton.addEventListener('click', (e) => {
+      const rect = ctaButton.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      for (let i = 0; i < 30; i++) {
+        particles.push(new Particle(
+          x + rect.left,
+          y + rect.top,
+          Math.random() > 0.5 ? '#FF5722' : '#4CAF50'
+        ));
+      }
+    });
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</div>
+</element><element id="f26ed9b4-fd70-4b5f-babe-f066862c1c16" data-section-id="f26ed9b4-fd70-4b5f-babe-f066862c1c16">
+
+
+<div id="root">
+  <footer id="footer" class="relative bg-neutral-900 pt-20 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF5722] via-neutral-900 to-[#4CAF50]"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <!-- Brand Section -->
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-6 font-[Rajdhani]">ResumeAI</h3>
+          <p class="text-gray-400 mb-6 font-[Exo2]">Next-generation resume builder powered by artificial intelligence.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-bold text-white mb-6 font-[Orbitron]">Quick Links</h4>
+          <ul class="space-y-4">
+            <li>
+              <a href="/about" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="/privacy" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="/terms" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+                Terms of Service
+              </a>
+            </li>
+            <li>
+              <a href="/contact" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="/blog" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300 font-[Exo2]">
+                Blog
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Features -->
+        <div>
+          <h4 class="text-lg font-bold text-white mb-6 font-[Orbitron]">Features</h4>
+          <ul class="space-y-4 font-[Exo2]">
+            <li><a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">AI Resume Builder</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">Job Tracking</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">Career Timeline</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-[#FF5722] transition-colors duration-300">Browser Extension</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="text-lg font-bold text-white mb-6 font-[Orbitron]">Stay Updated</h4>
+          <form class="space-y-4">
+            <div class="relative">
+              <input type="email" placeholder="Enter your email" class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#FF5722] transition-colors duration-300 font-[Exo2]"/>
+            </div>
+            <button type="submit" class="w-full px-4 py-3 bg-[#FF5722] hover:bg-[#FF7043] text-white rounded-lg transition-colors duration-300 font-[Orbitron]">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-neutral-800 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm font-[Exo2] mb-4 md:mb-0">
+            © 2024 ResumeAI. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-[#FF5722] text-sm transition-colors duration-300 font-[Exo2]">Privacy Policy</a>
+            <a href="#" class="text-gray-400 hover:text-[#FF5722] text-sm transition-colors duration-300 font-[Exo2]">Terms of Service</a>
+            <a href="#" class="text-gray-400 hover:text-[#FF5722] text-sm transition-colors duration-300 font-[Exo2]">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div></element></div>
+            <div id="page_complete">
+            <script src="/edit/edit.js"></script>
+            <script>
+                console.log('Page complete');
+                
+            </script>
+            </body>
+            </html>
+          

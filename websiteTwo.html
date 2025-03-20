@@ -1,0 +1,1600 @@
+
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="theme-color" content="#ffffff">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      
+      <title>{{project.seoTitle}}</title>
+      <!-- SEO Description -->
+      <meta name="description" content="{{project.seoDescription}}">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+       
+      
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+      <!-- Performance optimization: Preload critical resources -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+      
+      <!-- Header Scripts -->
+      <script id="header-scripts">
+        // This script tag will be replaced with actual scripts.head content
+        if (window.scripts && window.scripts.head) {
+          document.getElementById('header-scripts').outerHTML = window.scripts.head;
+        }
+      </script>
+
+      <!-- Preconnect -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+      <!-- Font stylesheet -->
+
+      <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  DEFAULT: '{{settings.colors.primary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8', 
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                secondary: {
+                  DEFAULT: '{{settings.colors.secondary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3', 
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                accent: {
+                  DEFAULT: '{{settings.colors.accent}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3', 
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+              },
+              fontFamily: {
+                sans: ['{{settings.fonts.primary}}', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+                body: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      });
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <!-- Dynamic Meta Tags -->
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="keywords" content="{{project.meta.keywords}}">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      <meta name="google-site-verification" content="{{project.meta.googleVerification}}">
+      <meta name="baidu-verification" content="{{project.meta.baiduVerification}}">
+      <meta name="yandex-verification" content="{{project.meta.yandexVerification}}">
+      <meta name="bing-verification" content="{{project.meta.bingVerification}}">
+      <meta property="og:title" content="{{project.meta.ogTitle}}">
+      <meta property="og:description" content="{{project.meta.ogDescription}}">
+      <meta property="og:image" content="{{project.meta.ogImage}}">
+      <meta property="og:type" content="website">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="{{project.name}}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="{{project.meta.ogTitle}}">
+      <meta name="twitter:description" content="{{project.meta.ogDescription}}">
+      <meta name="twitter:image" content="{{project.meta.ogImage}}">
+    
+      
+      <link rel="icon" type="image/x-icon" href="{{settings.favicon}}">
+      
+      <style>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: {{settings.fonts.primary}}, Inter, system-ui, sans-serif;
+        }
+        body {
+          font-family: {{settings.fonts.secondary}}, Inter, system-ui, sans-serif;
+        }
+      </style>
+   </head>
+   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
+      <!-- Skip to main content link for accessibility -->
+      <a href="#main-content" 
+         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
+         Skip to main content
+      </a>
+
+      <!-- Header -->
+      <header class="relative z-50 bg-white dark:bg-gray-900">
+        <!-- Header content goes here -->
+      </header>
+
+      <!-- Main content area -->
+      <main id="main-content" class="flex-1 relative h-full">
+        <!-- Content will be injected here -->
+      </main>
+
+      <!-- {bodyScripts} -->
+      
+
+   </body>
+</html><script>window.projectId = "8cebc064-02a8-47d1-8541-390f4ac35ee8";</script><div id='RolloutPageContent'><element id="fab6c4c2-77bf-42ed-a144-0a9dcb2f0f19" data-section-id="fab6c4c2-77bf-42ed-a144-0a9dcb2f0f19">
+
+
+<div id="root">
+  <header id="header" class="bg-[#0a192f] text-white">
+    <nav class="px-6 py-4">
+      <div class="container mx-auto">
+        <div class="flex justify-between items-center">
+          <a href="/" class="text-2xl font-bold text-[#64ffda]">NextGen Resume</a>
+          
+          <div class="hidden md:flex space-x-8">
+              <a href="/" class="hover:text-[#64ffda] transition-colors">Home</a>
+              <a href="/features" class="hover:text-[#64ffda] transition-colors">Features</a>
+              <a href="/ai-builder" class="hover:text-[#64ffda] transition-colors">AI Builder</a>
+              <a href="/job-tracker" class="hover:text-[#64ffda] transition-colors">Job Tracker</a>
+              <a href="/pricing" class="hover:text-[#64ffda] transition-colors">Pricing</a>
+              <a href="/contact" class="hover:text-[#64ffda] transition-colors">Contact</a>
+          </div>
+
+          <button id="mobile-menu-btn" class="md:hidden">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a href="/" class="block py-2 hover:text-[#64ffda] transition-colors">Home</a>
+            <a href="/features" class="block py-2 hover:text-[#64ffda] transition-colors">Features</a>
+            <a href="/ai-builder" class="block py-2 hover:text-[#64ffda] transition-colors">AI Builder</a>
+            <a href="/job-tracker" class="block py-2 hover:text-[#64ffda] transition-colors">Job Tracker</a>
+            <a href="/pricing" class="block py-2 hover:text-[#64ffda] transition-colors">Pricing</a>
+            <a href="/contact" class="block py-2 hover:text-[#64ffda] transition-colors">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-6 py-24 min-h-[70vh] flex items-center">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="animate__animated animate__fadeInLeft">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent">
+            Build Your Future with AI-Powered Resumes
+          </h1>
+          <p class="text-xl mb-8 text-gray-300">
+            Create professional, ATS-friendly resumes with our next-generation AI builder. Stand out from the crowd and land your dream job.
+          </p>
+          <button class="bg-[#64ffda] text-[#0a192f] px-8 py-3 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(100,255,218,0.5)] transition-all duration-300 transform hover:scale-105">
+            Get Started Free
+          </button>
+        </div>
+        
+        <div class="relative animate__animated animate__fadeInRight">
+          <div class="absolute inset-0 bg-[#64ffda] opacity-10 blur-3xl rounded-full"></div>
+          <div class="relative bg-[#0a192f]/50 p-8 rounded-2xl backdrop-blur-sm border border-[#64ffda]/20">
+            <div id="floating-resume" class="w-full h-[400px] flex items-center justify-center">
+              <div class="text-[#64ffda]">3D Resume Animation Placeholder</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Floating effect
+    document.addEventListener('mousemove', (e) => {
+      const floatingResume = document.getElementById('floating-resume');
+      const rect = floatingResume.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const moveX = (e.clientX - centerX) / 50;
+      const moveY = (e.clientY - centerY) / 50;
+      
+      floatingResume.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+  </script>
+</div>
+</element><element id="ef79d407-1eb4-4320-882d-e8ad7816ab78" data-section-id="ef79d407-1eb4-4320-882d-e8ad7816ab78">
+
+
+<div id="root">
+  <section id="hero" class="relative min-h-screen bg-[#0a192f] overflow-hidden">
+    <!-- Background Grid Pattern -->
+    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(10, 25, 47, 0.9) 2px, transparent 2px), linear-gradient(90deg, rgba(10, 25, 47, 0.9) 2px, transparent 2px); background-size: 50px 50px;"></div>
+    
+    <!-- Floating Particles Container -->
+    <div id="particles-js" class="absolute inset-0"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center justify-between min-h-screen pt-20">
+        <!-- Content Left -->
+        <div class="w-full lg:w-1/2 animate__animated animate__fadeInLeft">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text animate__animated animate__pulse animate__infinite animate__slow">
+            Transform Your Career with AI-Powered Resumes
+          </h1>
+          <p class="text-[#64ffda] text-xl mb-8">
+            Harness the power of artificial intelligence to create stunning, ATS-optimized resumes that get you noticed.
+          </p>
+          <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-[#64ffda] to-blue-500 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+            <button class="relative px-8 py-4 bg-[#64ffda] text-[#0a192f] rounded-lg font-bold transform hover:scale-105 transition-all duration-300 animate__animated animate__pulse animate__infinite animate__slow">
+              Start Building Now
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Resume Hologram -->
+        <div class="w-full lg:w-1/2 mt-12 lg:mt-0">
+          <div id="hologram-container" class="relative w-full aspect-square max-w-2xl mx-auto">
+            <div class="absolute inset-0 bg-[#64ffda]/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="hologram-resume relative w-full h-full rounded-2xl backdrop-blur-sm border border-[#64ffda]/20 animate__animated animate__fadeInUp">
+              <!-- Neural Network Animation Container -->
+              <div id="neural-network" class="absolute inset-0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-8 h-12 rounded-full border-2 border-[#64ffda] flex justify-center">
+        <div class="w-2 h-2 bg-[#64ffda] rounded-full mt-2 animate-scroll"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Initialize Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#64ffda' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#64ffda', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'repulse' },
+          onclick: { enable: true, mode: 'push' },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+
+    // Hologram Mouse Movement Effect
+    const hologram = document.querySelector('.hologram-resume');
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      const x = (clientX - innerWidth / 2) / 20;
+      const y = (clientY - innerHeight / 2) / 20;
+      hologram.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+
+    // Scroll Animation
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled > 100) {
+        document.getElementById('neural-network').style.opacity = '1';
+      }
+    });
+  </script>
+
+  <style>
+    @keyframes scroll {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(8px); opacity: 0; }
+    }
+    .animate-scroll {
+      animation: scroll 1.5s infinite;
+    }
+    .hologram-resume {
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease-out;
+    }
+    #neural-network {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+</div>
+</element><element id="58f18d02-ed21-4292-8e3b-5794fdcce99f" data-section-id="58f18d02-ed21-4292-8e3b-5794fdcce99f">
+
+
+<div id="root">
+  <section id="features" class="relative bg-[#0a192f] py-24 overflow-hidden">
+    <!-- Background Effect -->
+    <div class="absolute inset-0 opacity-20" 
+         style="background-image: radial-gradient(circle at 2px 2px, #64ffda 1px, transparent 0); background-size: 40px 40px;">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+        Powerful Features for Modern Job Seekers
+      </h2>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- AI Resume Builder -->
+        <div class="feature-card relative group" data-aos="fade-up">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#64ffda]/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+          <div class="relative bg-[#0a192f]/80 p-8 rounded-xl backdrop-blur-sm border border-[#64ffda]/20 hover:border-[#64ffda]/40 transition-all duration-300">
+            <div id="ai-orb" class="w-20 h-20 mb-6 rounded-full bg-gradient-to-r from-[#64ffda] to-blue-500 opacity-80 animate-pulse"></div>
+            <h3 class="text-2xl font-bold text-white mb-4">AI-Powered Resume Builder</h3>
+            <p class="text-gray-300 mb-6">Create professional resumes with our advanced AI technology that adapts to your industry and experience level.</p>
+            <div class="flex gap-4 text-[#64ffda]">
+              <span class="feature-tag">Smart Formatting</span>
+              <span class="feature-tag">ATS Optimization</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Tracking System -->
+        <div class="feature-card relative group" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#64ffda]/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+          <div class="relative bg-[#0a192f]/80 p-8 rounded-xl backdrop-blur-sm border border-[#64ffda]/20 hover:border-[#64ffda]/40 transition-all duration-300">
+            <div class="w-20 h-20 mb-6 relative">
+              <div class="absolute inset-0 bg-[#64ffda] rounded-full opacity-20 animate-ping"></div>
+              <div class="relative w-full h-full rounded-full bg-gradient-to-r from-[#64ffda] to-blue-500 opacity-80"></div>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Smart Job Tracking</h3>
+            <p class="text-gray-300 mb-6">Monitor your job applications, interviews, and follow-ups in one centralized dashboard.</p>
+            <div class="flex gap-4 text-[#64ffda]">
+              <span class="feature-tag">Application Timeline</span>
+              <span class="feature-tag">Status Updates</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Browser Extension -->
+        <div class="feature-card relative group" data-aos="fade-up" data-aos-delay="200">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#64ffda]/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+          <div class="relative bg-[#0a192f]/80 p-8 rounded-xl backdrop-blur-sm border border-[#64ffda]/20 hover:border-[#64ffda]/40 transition-all duration-300">
+            <div class="w-20 h-20 mb-6 bg-gradient-to-r from-[#64ffda] to-blue-500 opacity-80 rounded-lg transform rotate-45"></div>
+            <h3 class="text-2xl font-bold text-white mb-4">Browser Extension</h3>
+            <p class="text-gray-300 mb-6">Seamlessly save job listings and track applications across multiple job boards.</p>
+            <div class="flex gap-4 text-[#64ffda]">
+              <span class="feature-tag">One-Click Save</span>
+              <span class="feature-tag">Multi-Platform</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Dashboard -->
+        <div class="feature-card relative group" data-aos="fade-up" data-aos-delay="300">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#64ffda]/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+          <div class="relative bg-[#0a192f]/80 p-8 rounded-xl backdrop-blur-sm border border-[#64ffda]/20 hover:border-[#64ffda]/40 transition-all duration-300">
+            <div class="w-20 h-20 mb-6 relative">
+              <div class="absolute inset-0 bg-[#64ffda] opacity-20 rounded-diamond animate-spin-slow"></div>
+              <div class="relative w-full h-full bg-gradient-to-r from-[#64ffda] to-blue-500 opacity-80 rounded-diamond"></div>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Analytics Dashboard</h3>
+            <p class="text-gray-300 mb-6">Track your application success rate and get insights to improve your job search strategy.</p>
+            <div class="flex gap-4 text-[#64ffda]">
+              <span class="feature-tag">Success Metrics</span>
+              <span class="feature-tag">AI Insights</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .feature-tag {
+      padding: 0.5rem 1rem;
+      border: 1px solid #64ffda;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+    }
+    
+    .rounded-diamond {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+    
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .animate-spin-slow {
+      animation: spin-slow 8s linear infinite;
+    }
+    
+    .feature-card {
+      transform: perspective(1000px) rotateX(0deg);
+      transition: transform 0.5s ease-out;
+    }
+    
+    .feature-card:hover {
+      transform: perspective(1000px) rotateX(5deg) scale(1.02);
+    }
+  </style>
+
+  <script>
+    // Interactive orb rotation
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (x - centerX) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+  </script>
+</div>
+</element><element id="d791b2a1-0950-41cf-8dcf-aa310d28cff4" data-section-id="d791b2a1-0950-41cf-8dcf-aa310d28cff4">
+
+
+<div id="root">
+  <section id="aiBuilder" class="relative py-24 bg-[#0a192f]/90">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 50%);"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        <!-- AI Orb -->
+        <div class="w-full lg:w-1/2" data-aos="fade-right">
+          <div class="relative w-full aspect-square max-w-lg mx-auto">
+            <!-- Orbital Rings -->
+            <div class="absolute inset-0 animate-spin-slow">
+              <div class="absolute inset-0 border-2 border-[#64ffda]/20 rounded-full transform rotate-45"></div>
+              <div class="absolute inset-4 border-2 border-[#64ffda]/30 rounded-full transform -rotate-45"></div>
+              <div class="absolute inset-8 border-2 border-[#64ffda]/40 rounded-full"></div>
+            </div>
+
+            <!-- Central Orb -->
+            <div id="ai-orb" class="absolute inset-16 bg-[#64ffda]/10 rounded-full backdrop-blur-xl border border-[#64ffda]/30 overflow-hidden">
+              <!-- Neural Network Nodes -->
+              <div id="neural-nodes" class="absolute inset-0">
+                <div class="node absolute top-1/4 left-1/4 w-2 h-2 bg-[#64ffda] rounded-full"></div>
+                <div class="node absolute top-3/4 right-1/4 w-2 h-2 bg-[#64ffda] rounded-full"></div>
+                <div class="node absolute top-1/2 right-1/3 w-2 h-2 bg-[#64ffda] rounded-full"></div>
+                <div class="node absolute bottom-1/3 left-1/2 w-2 h-2 bg-[#64ffda] rounded-full"></div>
+              </div>
+            </div>
+
+            <!-- Floating Particles -->
+            <div class="particles absolute inset-0"></div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="w-full lg:w-1/2" data-aos="fade-left">
+          <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+            AI-Powered Resume Creation
+          </h2>
+          
+          <div class="space-y-6">
+            <div class="feature-item group">
+              <div class="relative p-6 bg-[#0a192f]/60 rounded-xl border border-[#64ffda]/20 backdrop-blur-sm hover:border-[#64ffda]/40 transition-all duration-300">
+                <h3 class="text-xl font-bold text-[#64ffda] mb-3">Smart Content Analysis</h3>
+                <p class="text-gray-300">Our AI analyzes your experience and automatically suggests optimal content and formatting.</p>
+              </div>
+            </div>
+
+            <div class="feature-item group">
+              <div class="relative p-6 bg-[#0a192f]/60 rounded-xl border border-[#64ffda]/20 backdrop-blur-sm hover:border-[#64ffda]/40 transition-all duration-300">
+                <h3 class="text-xl font-bold text-[#64ffda] mb-3">ATS Optimization</h3>
+                <p class="text-gray-300">Ensures your resume passes Applicant Tracking Systems with targeted keywords and formatting.</p>
+              </div>
+            </div>
+
+            <div class="feature-item group">
+              <div class="relative p-6 bg-[#0a192f]/60 rounded-xl border border-[#64ffda]/20 backdrop-blur-sm hover:border-[#64ffda]/40 transition-all duration-300">
+                <h3 class="text-xl font-bold text-[#64ffda] mb-3">Real-time Suggestions</h3>
+                <p class="text-gray-300">Get instant feedback and improvements as you build your perfect resume.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+
+    .node {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .feature-item {
+      transform: perspective(1000px) rotateX(0deg);
+      transition: transform 0.5s ease-out;
+    }
+
+    .feature-item:hover {
+      transform: perspective(1000px) rotateX(5deg) scale(1.02);
+    }
+  </style>
+
+  <script>
+    // AI Orb Interaction
+    const aiOrb = document.getElementById('ai-orb');
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const xAxis = (clientX - innerWidth / 2) / 25;
+      const yAxis = (clientY - innerHeight / 2) / 25;
+      
+      aiOrb.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+
+    // Neural Network Animation
+    const neuralNodes = document.getElementById('neural-nodes');
+    function createConnection(node1, node2) {
+      const line = document.createElement('div');
+      line.className = 'absolute w-full h-px bg-[#64ffda]/30';
+      line.style.top = `${node1.offsetTop}px`;
+      line.style.left = `${node1.offsetLeft}px`;
+      neuralNodes.appendChild(line);
+    }
+
+    const nodes = document.querySelectorAll('.node');
+    nodes.forEach((node, i) => {
+      if (i < nodes.length - 1) {
+        createConnection(node, nodes[i + 1]);
+      }
+    });
+  </script>
+</div>
+</element><element id="1580f2e9-6ea7-49f8-8e04-8580fd56a424" data-section-id="1580f2e9-6ea7-49f8-8e04-8580fd56a424">
+
+
+<div id="root">
+  <section id="jobTracker" class="relative py-24 bg-[#0a192f] overflow-hidden">
+    <!-- Animated Background Grid -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: linear-gradient(#64ffda 1px, transparent 1px), linear-gradient(90deg, #64ffda 1px, transparent 1px); background-size: 30px 30px;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+        Track Your Career Journey
+      </h2>
+
+      <!-- 3D Timeline -->
+      <div class="timeline-container relative max-w-4xl mx-auto" data-aos="fade-up">
+        <!-- Timeline Line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#64ffda] to-transparent"></div>
+
+        <!-- Timeline Items -->
+        <div class="timeline-items space-y-24">
+          <!-- Item 1 -->
+          <div class="timeline-item group relative flex items-center">
+            <div class="w-1/2 pr-12 text-right opacity-0 transform -translate-x-12 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+              <h3 class="text-2xl font-bold text-[#64ffda] mb-2">Application Submitted</h3>
+              <p class="text-gray-300">Track when and where you've applied with automatic date stamping and company details.</p>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#64ffda] rounded-full glow"></div>
+            <div class="w-1/2 pl-12"></div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item group relative flex items-center">
+            <div class="w-1/2 pr-12"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#64ffda] rounded-full glow"></div>
+            <div class="w-1/2 pl-12 opacity-0 transform translate-x-12 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+              <h3 class="text-2xl font-bold text-[#64ffda] mb-2">Interview Scheduled</h3>
+              <p class="text-gray-300">Manage your interview schedule with automated reminders and preparation tips.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item group relative flex items-center">
+            <div class="w-1/2 pr-12 text-right opacity-0 transform -translate-x-12 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+              <h3 class="text-2xl font-bold text-[#64ffda] mb-2">Offer Received</h3>
+              <p class="text-gray-300">Document and compare offers with our intelligent analysis tools.</p>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#64ffda] rounded-full glow"></div>
+            <div class="w-1/2 pl-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .glow {
+      box-shadow: 0 0 20px #64ffda;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 20px #64ffda;
+      }
+      50% {
+        box-shadow: 0 0 40px #64ffda;
+      }
+      100% {
+        box-shadow: 0 0 20px #64ffda;
+      }
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, #64ffda 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .timeline-item:hover::before {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    // Timeline Animation on Scroll
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          const content = entry.target.querySelector('div[class*="opacity-0"]');
+          content.style.opacity = '1';
+          content.style.transform = 'translateX(0)';
+        }
+      });
+    }, observerOptions);
+
+    timelineItems.forEach(item => {
+      observer.observe(item);
+    });
+
+    // Mouse movement parallax effect
+    document.addEventListener('mousemove', (e) => {
+      const timelineContainer = document.querySelector('.timeline-container');
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const xAxis = (clientX - innerWidth / 2) / 50;
+      const yAxis = (clientY - innerHeight / 2) / 50;
+      
+      timelineContainer.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
+    });
+  </script>
+</div>
+</element><element id="e9dd6d85-ce3a-4ddf-bb1c-473a31a9f0cc" data-section-id="e9dd6d85-ce3a-4ddf-bb1c-473a31a9f0cc">
+
+
+<div id="root">
+  <section id="browserExtension" class="relative py-24 bg-[#0a192f] overflow-hidden">
+    <!-- Portal Background Effect -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-[#0a192f]"></div>
+      <div class="absolute inset-0 opacity-30" style="background: radial-gradient(circle at center, #64ffda 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+        Seamless Job Discovery
+      </h2>
+
+      <div class="relative max-w-6xl mx-auto">
+        <!-- Portal Effect -->
+        <div class="portal-container relative h-[600px]" data-aos="fade-up">
+          <!-- Central Portal -->
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-gradient-to-r from-[#64ffda]/20 to-blue-500/20 backdrop-blur-xl portal-glow"></div>
+
+          <!-- Floating Cards -->
+          <div id="floating-cards" class="relative w-full h-full">
+            <!-- Job Card 1 -->
+            <div class="job-card absolute transform hover:scale-105 transition-all duration-300 cursor-pointer" style="top: 20%; left: 10%;">
+              <div class="relative p-6 bg-[#0a192f]/80 backdrop-blur-sm border border-[#64ffda]/30 rounded-xl w-64">
+                <div class="text-[#64ffda] font-bold mb-2">Senior Developer</div>
+                <p class="text-gray-300 text-sm">TechCorp Inc.</p>
+                <div class="absolute -bottom-2 -right-2 w-4 h-4 bg-[#64ffda] rounded-full animate-pulse"></div>
+              </div>
+            </div>
+
+            <!-- Job Card 2 -->
+            <div class="job-card absolute transform hover:scale-105 transition-all duration-300 cursor-pointer" style="top: 40%; right: 10%;">
+              <div class="relative p-6 bg-[#0a192f]/80 backdrop-blur-sm border border-[#64ffda]/30 rounded-xl w-64">
+                <div class="text-[#64ffda] font-bold mb-2">UX Designer</div>
+                <p class="text-gray-300 text-sm">Creative Studios</p>
+                <div class="absolute -bottom-2 -right-2 w-4 h-4 bg-[#64ffda] rounded-full animate-pulse"></div>
+              </div>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="job-card absolute transform hover:scale-105 transition-all duration-300 cursor-pointer" style="bottom: 20%; left: 20%;">
+              <div class="relative p-6 bg-[#0a192f]/80 backdrop-blur-sm border border-[#64ffda]/30 rounded-xl w-64">
+                <div class="text-[#64ffda] font-bold mb-2">Product Manager</div>
+                <p class="text-gray-300 text-sm">Innovation Labs</p>
+                <div class="absolute -bottom-2 -right-2 w-4 h-4 bg-[#64ffda] rounded-full animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Description -->
+        <div class="text-center mt-16 max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold text-[#64ffda] mb-4">Browser Extension</h3>
+          <p class="text-gray-300 mb-8">Save job listings with one click from any job board. Our smart extension automatically captures all relevant details and syncs with your dashboard.</p>
+          <button class="bg-[#64ffda]/10 border border-[#64ffda] text-[#64ffda] px-8 py-3 rounded-lg hover:bg-[#64ffda]/20 transition-all duration-300 transform hover:scale-105">
+            Add to Browser
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .portal-glow {
+      animation: portalPulse 3s infinite;
+      box-shadow: 0 0 60px #64ffda;
+    }
+
+    @keyframes portalPulse {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    }
+
+    .job-card {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+
+  <script>
+    // Animate cards towards portal on hover
+    const portalContainer = document.querySelector('.portal-container');
+    const jobCards = document.querySelectorAll('.job-card');
+
+    jobCards.forEach(card => {
+      card.addEventListener('mouseover', () => {
+        const portalCenter = {
+          x: portalContainer.offsetWidth / 2,
+          y: portalContainer.offsetHeight / 2
+        };
+
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = {
+          x: cardRect.left + cardRect.width / 2,
+          y: cardRect.top + cardRect.height / 2
+        };
+
+        const angle = Math.atan2(portalCenter.y - cardCenter.y, portalCenter.x - cardCenter.x);
+        const distance = 20;
+
+        card.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1.05)`;
+      });
+
+      card.addEventListener('mouseout', () => {
+        card.style.transform = 'none';
+      });
+    });
+
+    // Parallax effect
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      jobCards.forEach(card => {
+        const moveX = (clientX - innerWidth / 2) / 50;
+        const moveY = (clientY - innerHeight / 2) / 50;
+        card.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+    });
+  </script>
+</div>
+</element><element id="e1c06b2a-3578-4e26-a082-aaab78b3886f" data-section-id="e1c06b2a-3578-4e26-a082-aaab78b3886f">
+
+<div id="root">
+  <section id="pricing" class="relative py-24 bg-[#0a192f] overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, #64ffda 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+        Choose Your Plan
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Basic Plan -->
+        <div class="pricing-card group" data-aos="fade-up" data-aos-delay="0">
+          <div class="relative p-8 bg-[#0a192f]/80 backdrop-blur-xl border border-[#64ffda]/20 rounded-2xl hover:border-[#64ffda]/50 transition-all duration-500 h-full">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#64ffda]/5 to-transparent rounded-2xl"></div>
+            <div class="relative">
+              <h3 class="text-2xl font-bold text-white mb-4">Basic</h3>
+              <div class="text-4xl font-bold text-[#64ffda] mb-6">$0<span class="text-lg text-gray-400">/month</span></div>
+              
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  1 Resume Template
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Basic AI Suggestions
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Export as PDF
+                </li>
+              </ul>
+              
+              <button class="w-full py-3 px-6 rounded-lg bg-[#64ffda]/10 border border-[#64ffda]/50 text-[#64ffda] hover:bg-[#64ffda]/20 transition-all duration-300 transform hover:scale-105">
+                Get Started
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card group" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative p-8 bg-[#0a192f]/80 backdrop-blur-xl border border-[#64ffda]/40 rounded-2xl hover:border-[#64ffda] transition-all duration-500 h-full transform scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#64ffda]/10 to-transparent rounded-2xl"></div>
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#64ffda] text-[#0a192f] px-4 py-1 rounded-full text-sm font-bold">
+              MOST POPULAR
+            </div>
+            <div class="relative">
+              <h3 class="text-2xl font-bold text-white mb-4">Pro</h3>
+              <div class="text-4xl font-bold text-[#64ffda] mb-6">$19<span class="text-lg text-gray-400">/month</span></div>
+              
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Unlimited Templates
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Advanced AI Features
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Job Tracking
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Browser Extension
+                </li>
+              </ul>
+              
+              <button class="glow-button w-full py-3 px-6 rounded-lg bg-[#64ffda] text-[#0a192f] font-bold hover:shadow-[0_0_20px_rgba(100,255,218,0.5)] transition-all duration-300 transform hover:scale-105">
+                Start Pro Trial
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card group" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative p-8 bg-[#0a192f]/80 backdrop-blur-xl border border-[#64ffda]/20 rounded-2xl hover:border-[#64ffda]/50 transition-all duration-500 h-full">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#64ffda]/5 to-transparent rounded-2xl"></div>
+            <div class="relative">
+              <h3 class="text-2xl font-bold text-white mb-4">Enterprise</h3>
+              <div class="text-4xl font-bold text-[#64ffda] mb-6">$49<span class="text-lg text-gray-400">/month</span></div>
+              
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Everything in Pro
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Custom Branding
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Team Management
+                </li>
+                <li class="flex items-center text-gray-300">
+                  <svg class="w-5 h-5 mr-2 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Priority Support
+                </li>
+              </ul>
+              
+              <button class="w-full py-3 px-6 rounded-lg bg-[#64ffda]/10 border border-[#64ffda]/50 text-[#64ffda] hover:bg-[#64ffda]/20 transition-all duration-300 transform hover:scale-105">
+                Contact Sales
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .pricing-card {
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .glow-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(100,255,218,0.3), transparent);
+      transform: rotate(45deg);
+      animation: glowTrail 2s linear infinite;
+    }
+
+    @keyframes glowTrail {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+  </style>
+
+  <script>
+    // Pricing card hover effect
+    const cards = document.querySelectorAll('.pricing-card');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      });
+    });
+  </script>
+</div></element><element id="dccf3118-7fd5-422e-9ee3-c0f78cbb3d4d" data-section-id="dccf3118-7fd5-422e-9ee3-c0f78cbb3d4d">
+
+<div id="root">
+  <section id="testimonials" class="relative py-24 bg-[#0a192f] overflow-hidden">
+    <!-- Animated Grid Background -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background: linear-gradient(90deg, #64ffda 1px, transparent 1px), linear-gradient(#64ffda 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+        Success Stories
+      </h2>
+
+      <div class="testimonials-carousel relative max-w-6xl mx-auto" data-aos="fade-up">
+        <!-- Testimonial Cards Container -->
+        <div class="flex overflow-hidden">
+          <div class="testimonials-track flex transition-transform duration-500">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+              <div class="relative bg-[#0a192f]/80 p-8 rounded-2xl backdrop-blur-xl border border-[#64ffda]/20 h-full group hover:border-[#64ffda]/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#64ffda]/5 to-transparent rounded-2xl"></div>
+                <div class="relative">
+                  <div class="text-[#64ffda] mb-6">"</div>
+                  <p class="text-gray-300 mb-6">Landed my dream job at Google thanks to the AI-powered resume builder. The intelligent suggestions made all the difference.</p>
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-[#64ffda]/20 flex items-center justify-center border border-[#64ffda]/30">
+                      <span class="text-[#64ffda] font-bold">JS</span>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-white font-bold">John Smith</div>
+                      <div class="text-[#64ffda] text-sm">Software Engineer</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+              <div class="relative bg-[#0a192f]/80 p-8 rounded-2xl backdrop-blur-xl border border-[#64ffda]/20 h-full group hover:border-[#64ffda]/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#64ffda]/5 to-transparent rounded-2xl"></div>
+                <div class="relative">
+                  <div class="text-[#64ffda] mb-6">"</div>
+                  <p class="text-gray-300 mb-6">The job tracking feature helped me stay organized during my job search. Received multiple offers within weeks!</p>
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-[#64ffda]/20 flex items-center justify-center border border-[#64ffda]/30">
+                      <span class="text-[#64ffda] font-bold">SD</span>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-white font-bold">Sarah Davis</div>
+                      <div class="text-[#64ffda] text-sm">Product Manager</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+              <div class="relative bg-[#0a192f]/80 p-8 rounded-2xl backdrop-blur-xl border border-[#64ffda]/20 h-full group hover:border-[#64ffda]/50 transition-all duration-300">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#64ffda]/5 to-transparent rounded-2xl"></div>
+                <div class="relative">
+                  <div class="text-[#64ffda] mb-6">"</div>
+                  <p class="text-gray-300 mb-6">The browser extension is a game-changer. It made applying to jobs seamless and efficient. Highly recommended!</p>
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-[#64ffda]/20 flex items-center justify-center border border-[#64ffda]/30">
+                      <span class="text-[#64ffda] font-bold">AK</span>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-white font-bold">Alex Kim</div>
+                      <div class="text-[#64ffda] text-sm">UX Designer</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-[#0a192f]/80 p-3 rounded-full border border-[#64ffda]/30 hover:border-[#64ffda] transition-all" id="prev-btn">
+          <svg class="w-6 h-6 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-[#0a192f]/80 p-3 rounded-full border border-[#64ffda]/30 hover:border-[#64ffda] transition-all" id="next-btn">
+          <svg class="w-6 h-6 text-[#64ffda]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const track = document.querySelector('.testimonials-track');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    let currentIndex = 0;
+    const cardWidth = 100 / cards.length;
+    
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+      currentIndex = Math.max(currentIndex - 1, 0);
+      updateCarousel();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      currentIndex = Math.min(currentIndex + 1, cards.length - 1);
+      updateCarousel();
+    });
+
+    // Add hover effect to cards
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'none';
+      });
+    });
+
+    // Auto-play carousel
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCarousel();
+    }, 5000);
+  </script>
+</div></element><element id="7f25b05d-eaa9-4706-ac12-cce75cd8ae15" data-section-id="7f25b05d-eaa9-4706-ac12-cce75cd8ae15">
+
+<div id="root">
+  <section id="contact" class="relative py-24 bg-[#0a192f] overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 opacity-20" style="background: radial-gradient(circle at 50% 50%, #64ffda 0%, transparent 50%);"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-white text-transparent bg-clip-text">
+        Get in Touch
+      </h2>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="relative bg-[#0a192f]/80 p-8 md:p-12 rounded-2xl backdrop-blur-xl border border-[#64ffda]/20">
+          <!-- Glowing Corner Effects -->
+          <div class="absolute top-0 left-0 w-20 h-20 bg-[#64ffda]/10 rounded-tl-2xl filter blur-lg"></div>
+          <div class="absolute bottom-0 right-0 w-20 h-20 bg-[#64ffda]/10 rounded-br-2xl filter blur-lg"></div>
+
+          <form class="space-y-6 relative">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="form-group">
+                <label class="block text-[#64ffda] mb-2">Name</label>
+                <input type="text" 
+                       class="w-full bg-[#0a192f]/50 border border-[#64ffda]/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#64ffda] focus:outline-none focus:ring-1 focus:ring-[#64ffda] transition-all duration-300"
+                       placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label class="block text-[#64ffda] mb-2">Email</label>
+                <input type="email" 
+                       class="w-full bg-[#0a192f]/50 border border-[#64ffda]/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#64ffda] focus:outline-none focus:ring-1 focus:ring-[#64ffda] transition-all duration-300"
+                       placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="block text-[#64ffda] mb-2">Subject</label>
+              <input type="text" 
+                     class="w-full bg-[#0a192f]/50 border border-[#64ffda]/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#64ffda] focus:outline-none focus:ring-1 focus:ring-[#64ffda] transition-all duration-300"
+                     placeholder="How can we help?">
+            </div>
+
+            <div class="form-group">
+              <label class="block text-[#64ffda] mb-2">Message</label>
+              <textarea rows="5" 
+                        class="w-full bg-[#0a192f]/50 border border-[#64ffda]/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#64ffda] focus:outline-none focus:ring-1 focus:ring-[#64ffda] transition-all duration-300"
+                        placeholder="Your message..."></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" 
+                      class="submit-btn relative px-8 py-4 bg-[#64ffda] text-[#0a192f] rounded-lg font-bold overflow-hidden transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#64ffda] focus:ring-offset-2 focus:ring-offset-[#0a192f]">
+                <span class="relative z-10">Send Message</span>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#64ffda] to-blue-400 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Additional Contact Info -->
+        <div class="mt-16 grid md:grid-cols-3 gap-8 text-center">
+          <div class="contact-card p-6 bg-[#0a192f]/50 rounded-xl border border-[#64ffda]/20 hover:border-[#64ffda]/50 transition-all duration-300">
+            <div class="text-[#64ffda] mb-4">
+              <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-white font-bold mb-2">Email</h3>
+            <p class="text-[#64ffda]">support@nextresume.com</p>
+          </div>
+
+          <div class="contact-card p-6 bg-[#0a192f]/50 rounded-xl border border-[#64ffda]/20 hover:border-[#64ffda]/50 transition-all duration-300">
+            <div class="text-[#64ffda] mb-4">
+              <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-white font-bold mb-2">Location</h3>
+            <p class="text-[#64ffda]">San Francisco, CA</p>
+          </div>
+
+          <div class="contact-card p-6 bg-[#0a192f]/50 rounded-xl border border-[#64ffda]/20 hover:border-[#64ffda]/50 transition-all duration-300">
+            <div class="text-[#64ffda] mb-4">
+              <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+            </div>
+            <h3 class="text-white font-bold mb-2">Social</h3>
+            <div class="flex justify-center space-x-4">
+              <a href="#" class="text-[#64ffda] hover:text-white transition-colors">Twitter</a>
+              <a href="#" class="text-[#64ffda] hover:text-white transition-colors">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .form-group input:focus,
+    .form-group textarea:focus {
+      box-shadow: 0 0 15px rgba(100,255,218,0.2);
+    }
+
+    .contact-card {
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(100,255,218,0.1);
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(100,255,218,0.3), transparent);
+      transform: rotate(45deg);
+      animation: buttonGlow 2s linear infinite;
+    }
+
+    @keyframes buttonGlow {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+  </style>
+
+  <script>
+    // Form interaction effects
+    const formInputs = document.querySelectorAll('input, textarea');
+    formInputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', () => {
+        input.parentElement.classList.remove('focused');
+      });
+    });
+
+    // Contact cards hover effect
+    const cards = document.querySelectorAll('.contact-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      });
+    });
+  </script>
+</div></element><element id="0f60393a-54a8-4c72-a464-eabb4b7e1b46" data-section-id="0f60393a-54a8-4c72-a464-eabb4b7e1b46">
+
+<div id="root">
+  <footer id="footer" class="relative bg-[#0a192f] pt-24 pb-12 overflow-hidden">
+    <!-- Animated Grid Background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 opacity-10" style="background: linear-gradient(90deg, #64ffda 1px, transparent 1px), linear-gradient(#64ffda 1px, transparent 1px); background-size: 30px 30px;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative">
+      <!-- Main Footer Content -->
+      <div class="grid md:grid-cols-4 gap-12 mb-16">
+        <!-- Brand Column -->
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold text-[#64ffda] mb-6">NextGen Resume</h3>
+          <p class="text-gray-300 mb-6 max-w-md">Build your future with AI-powered resumes that get you noticed. Transform your career journey with cutting-edge technology.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-[#64ffda] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-[#64ffda] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-[#64ffda] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold mb-6">Quick Links</h4>
+          <ul class="space-y-4">
+              <li><a href="/privacy" class="text-gray-300 hover:text-[#64ffda] transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="text-gray-300 hover:text-[#64ffda] transition-colors">Terms of Service</a></li>
+              <li><a href="/faq" class="text-gray-300 hover:text-[#64ffda] transition-colors">FAQ</a></li>
+              <li><a href="/blog" class="text-gray-300 hover:text-[#64ffda] transition-colors">Blog</a></li>
+              <li><a href="/support" class="text-gray-300 hover:text-[#64ffda] transition-colors">Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="text-white font-bold mb-6">Stay Updated</h4>
+          <form class="space-y-4">
+            <div class="relative">
+              <input type="email" 
+                     placeholder="Enter your email" 
+                     class="w-full bg-[#0a192f]/50 border border-[#64ffda]/30 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#64ffda] focus:outline-none focus:ring-1 focus:ring-[#64ffda] transition-all duration-300">
+            </div>
+            <button type="submit" 
+                    class="w-full bg-[#64ffda]/10 border border-[#64ffda] text-[#64ffda] py-3 rounded-lg hover:bg-[#64ffda]/20 transition-all duration-300">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-[#64ffda]/20 pt-8 mt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm">© 2024 NextGen Resume. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="text-gray-400 hover:text-[#64ffda] text-sm transition-colors">Privacy Policy</a>
+            <a href="#" class="text-gray-400 hover:text-[#64ffda] text-sm transition-colors">Terms of Service</a>
+            <a href="#" class="text-gray-400 hover:text-[#64ffda] text-sm transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glowing Corner Effects -->
+    <div class="absolute bottom-0 left-0 w-40 h-40 bg-[#64ffda]/5 rounded-tr-full blur-3xl"></div>
+    <div class="absolute top-0 right-0 w-40 h-40 bg-[#64ffda]/5 rounded-bl-full blur-3xl"></div>
+  </footer>
+
+  <style>
+    .footer-glow {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at center, rgba(100,255,218,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+  </style>
+
+  <script>
+    // Footer glow effect following mouse
+    const footer = document.getElementById('footer');
+    const footerGlow = document.createElement('div');
+    footerGlow.className = 'footer-glow';
+    footer.appendChild(footerGlow);
+
+    footer.addEventListener('mousemove', (e) => {
+      const rect = footer.getBoundingClientRect();
+      const x = e.clientX - rect.left - 100;
+      const y = e.clientY - rect.top - 100;
+      
+      footerGlow.style.left = `${x}px`;
+      footerGlow.style.top = `${y}px`;
+    });
+  </script>
+</div></element></div>
+            <div id="page_complete">
+            <script src="/edit/edit.js"></script>
+            <script>
+                console.log('Page complete');
+                
+            </script>
+            </body>
+            </html>
+          

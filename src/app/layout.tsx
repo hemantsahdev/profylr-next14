@@ -3,6 +3,7 @@ import "./globals.css";
 import "../css/custom-scrollbar.css";
 import Topbar from "@/components/topbar/Topbar";
 import Sidebar from "@/shared/sidebar/Sidebar";
+import { Toaster } from "sonner";
 
 
 
@@ -32,7 +33,7 @@ export default function RootLayout({
                         <div className="min-h-[92%] w-full">
                             {children}
                         </div>
-
+                        <Toaster/>
                     </section>
                 </main>
             </body>
