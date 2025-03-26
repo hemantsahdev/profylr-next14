@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import {
     Sheet,
     SheetContent,
@@ -7,8 +7,8 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { formatDateObject } from '@/utils/timeFormat';
-import EventsOnADay from './EventsOnADay';
+import { formatDateObject } from "@/utils/timeFormat";
+import EventsOnADay from "./EventsOnADay";
 
 interface DaySheetProps{
     isSheetOpen:boolean,
@@ -49,39 +49,40 @@ const calendarEvents= [
 
 const DrawerForADay = ({ isSheetOpen, toggleSheet,selectedSlot }:DaySheetProps) => {
    
-    const [selectedDate, setSelectedDate] = useState (null);
+    // const [selectedDate, setSelectedDate] = useState (null);
 
-    useEffect(()=>{
-        if(selectedSlot){
-            console.log(isSheetOpen);
-            const value = formatDateObject(selectedSlot);
-            console.log(value);
-            setSelectedDate(value);
-        }
-    },[selectedSlot]);
+    // useEffect(()=>{
+    //     if(selectedSlot){
+    //         console.log(isSheetOpen);
+    //         const value = formatDateObject(selectedSlot);
+    //         console.log(value);
+    //         setSelectedDate(value);
+    //     }
+    // },[selectedSlot]);
     return (
-        <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
-            {selectedDate && (
-                <SheetContent
-                    side="right"
-                    className=" h-full w-full sm:max-w-[42rem] bg-gray-100 "
-                >
-                    <SheetHeader>
-                        <SheetTitle className="text-4xl" > 
-                            <div className="flex flex-col gap-3" >
-                                <p>{`${selectedDate?.month} ${selectedDate?.date}, ${selectedDate?.year}`} </p>
-                                <p>{`${selectedDate.day}`} </p>
-                            </div>
-                        </SheetTitle>
-                    </SheetHeader>
-                    <div className="mt-4  " >
-                        <EventsOnADay calendarEvents={calendarEvents} />
-                    </div>
-                </SheetContent>
-            )} 
+        <h1>Hello dummy! All commented out for now</h1>
+        // <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
+        //     {selectedDate && (
+        //         <SheetContent
+        //             side="right"
+        //             className=" h-full w-full sm:max-w-[42rem] bg-gray-100 "
+        //         >
+        //             <SheetHeader>
+        //                 <SheetTitle className="text-4xl" > 
+        //                     <div className="flex flex-col gap-3" >
+        //                         <p>{`${selectedDate?.month} ${selectedDate?.date}, ${selectedDate?.year}`} </p>
+        //                         <p>{`${selectedDate.day}`} </p>
+        //                     </div>
+        //                 </SheetTitle>
+        //             </SheetHeader>
+        //             <div className="mt-4  " >
+        //                 <EventsOnADay calendarEvents={calendarEvents} />
+        //             </div>
+        //         </SheetContent>
+        //     )} 
 
-        </Sheet>
+    // </Sheet>
     );
-}
+};
 
-export default DrawerForADay
+export default DrawerForADay;

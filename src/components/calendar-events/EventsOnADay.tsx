@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Button } from '../ui/button'
-import { Plus } from 'lucide-react';
-import EventCard from './EventCard';
+import React, { useEffect, useState } from "react";
+import { Plus } from "lucide-react";
+import { Button } from "../ui/button";
+import EventCard from "./EventCard";
 
 const EventsOnADay = ({calendarEvents}) => {
 
@@ -14,22 +14,23 @@ const EventsOnADay = ({calendarEvents}) => {
         }
     },[calendarEvents]);
 
-    const addEvent = (newEvent) => {
-        setEvents([...events, newEvent]);
-    };
+    // const addEvent = (newEvent) => {
+    //     setEvents([...events, newEvent]);
+    // };
   
-    const deleteEvent = (id: string) => {
-        setEvents(events.filter(event => event.id !== id));
-    };
+    // const deleteEvent = (id: string) => {
+    //     setEvents(events.filter(event => event.id !== id));
+    // };
   
-    const updateEvent = (updatedEvent) => {
-        setEvents(()=> events.map(event => event.id === updatedEvent.id ? updatedEvent : event));
-    };
+    // const updateEvent = (updatedEvent) => {
+    //     setEvents(()=> events.map(event => event.id === updatedEvent.id ? updatedEvent : event));
+    // };
 
     return(
         <>
-            <div className="flex flex-col gap-4" >
-                {/* header */}
+            <h1>Hello dummy! All commented out for now</h1>
+            {/* <div className="flex flex-col gap-4" >
+                {/* header *
                 <div className="w-full flex items-center justify-end " >
                     <Button  >
                         <Plus className="mr-2 h-4 w-4" /> Add Event
@@ -49,12 +50,12 @@ const EventsOnADay = ({calendarEvents}) => {
                 {/* <AddEventDialog
                     isOpen={isAddEventOpen} 
                     onClose={() => setIsAddEventOpen(false)} 
-                    onAdd={addEvent}  /> */}
+                    onAdd={addEvent}  /> 
            
             </div>
-         
+          */}
         </>
     );
-}
+};
 
-export default EventsOnADay
+export default EventsOnADay;
