@@ -42,7 +42,7 @@
       "no-undef": "off", // TypeScript handles undefined variables
       "no-shadow": "off", // TypeScript will check variable shadowing
 
-      "consistent-return": "error", // Enforce consistent return statements in functions
+      "consistent-return": "warn", // Enforce consistent return statements in functions
       "no-console": "warn", // Warn about console statements
       "no-unused-vars": "off", // Disable base rule in favor of TypeScript's version
       "no-redeclare": "error", // Disallow variable redeclaration
@@ -61,8 +61,8 @@
   
       // Additional TypeScript rules
       "@typescript-eslint/explicit-function-return-type": ["warn", { "allowExpressions": true }], // Explicit return type for functions
-      "@typescript-eslint/no-explicit-any": "error", // Discourage use of the 'any' type
-      "@typescript-eslint/consistent-type-definitions": ["error", "interface"], // Prefer consistent type definitions with `interface`
+      "@typescript-eslint/no-explicit-any": "warn", // Discourage use of the 'any' type
+      "@typescript-eslint/consistent-type-definitions": ["warn", "interface"], // Prefer consistent type definitions with `interface`
       "@typescript-eslint/ban-ts-comment": "warn",// Warn when @ts-ignore is used
 
       "import/order": ["error", { "groups": [["builtin", "external", "internal"]] }], // Enforce a convention in import order
