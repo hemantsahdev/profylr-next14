@@ -35,7 +35,7 @@ const ResumeCreationMethod = () => {
                 <div className="mt-8 mb-12 text-center animate-fade-in">
                     <h1 className="text-4xl font-bold text-foreground mb-3">How would you like to create your resume?</h1>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose your preferred method to create your resume. You&apos;ll select a template in the next step.
+            Choose your preferred method to create your resume. You&apos;ll select a template in the next step
                     </p>
                 </div>
         
