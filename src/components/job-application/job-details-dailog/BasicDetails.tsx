@@ -22,8 +22,8 @@ const BasicDetails = ({ details }: BasicDetailsProps) => {
     ];
     
     const handleOpenJobLink =(url:string):void=>{
-        window.open(url,"_blank")
-    }
+        window.open(url,"_blank");
+    };
 
     return (
         <motion.div
@@ -42,10 +42,10 @@ const BasicDetails = ({ details }: BasicDetailsProps) => {
                         className="bg-secondary py-2 px-4 rounded-lg"
                     >
                         <div className="flex items-center justify-between" >
-                        <h3 className="text-sm font-bold text-gray-700 ">{item.label}</h3>
-                        {item.id === "jobLink" && <button type="button" title="Job Link" onClick={()=> handleOpenJobLink(item.value)} >
-                            <ExternalLink size={16} className="hover:text-blue-500 hover:cursor-pointer" />
-                        </button>}
+                            <h3 className="text-sm font-bold text-gray-700 ">{item.label}</h3>
+                            {item.id === "jobLink" && <button type="button" title="Job Link" onClick={()=> handleOpenJobLink(item.value)} >
+                                <ExternalLink size={16} className="hover:text-blue-500 hover:cursor-pointer" />
+                            </button>}
                         </div>
                         <p className="text-base">{item.value}</p>
                     </motion.div>

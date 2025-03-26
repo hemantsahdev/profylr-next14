@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import { Edit } from "lucide-react";
+import { useRouter } from "next/navigation";
 import BasicDetails from "./BasicDetails";
 import StatusTrajectory from "./StatusTrajectory";
 import MiscEvents from "./MiscEvents";
 import NotesSection from "./NotesSection";
-import { Edit } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 interface JobApplication {
     id:string,
@@ -33,11 +33,11 @@ interface JobApplication {
 
 const JobApplicationViewer = ({ jobApplication }: { jobApplication: JobApplication }) => {
 
-    const router = useRouter()
+    const router = useRouter();
 
     const handleJobEdit = ()=>{
-        router.push(`/job-application/edit/${jobApplication.id}`)
-    }
+        router.push(`/job-application/edit/${jobApplication.id}`);
+    };
 
     return (
         <motion.div
