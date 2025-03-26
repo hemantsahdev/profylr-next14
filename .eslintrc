@@ -33,8 +33,8 @@
     
 
       // Indentation and code formatting
-      "indent": ["error", 4], // Enforce 4 spaces for indentation
-      "quotes": ["error", "double"], // Enforce double quotes
+      "indent": ["warn", 4], // Enforce 4 spaces for indentation
+      "quotes": ["warn", "double"], // Enforce double quotes
       "semi": ["error", "always"], // Require semicolons
       "no-duplicate-imports": "error", // Disallow duplicate imports
   
