@@ -7,9 +7,10 @@ import { toast } from "sonner";
 import SearchFilter from "@/components/select-template/SearchFilter";
 import TemplateCard from "@/components/select-template/TemplateCard";
 import RecommendedSection from "@/components/select-template/RecommendedSection";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, List, Sparkles } from "lucide-react";
 import Image from "next/image";
-import Header from "@/components/select-template/Header";
+import template1 from "@/assets/images/resume-templates/template1.jpeg";
+import { useRouter } from "next/navigation";
 
 // Template model
 export interface Template {
@@ -98,6 +99,7 @@ const SelectTemplate = () => {
         },
     ];
   
+    const router = useRouter();
     // State for search and filters
     const [searchQuery, setSearchQuery] = useState("");
     const [categoryFilter, setCategoryFilter] = useState("all");
@@ -151,6 +153,10 @@ const SelectTemplate = () => {
         toast.success("Great choice!", {
             description: "You're now ready to customize your resume.",
         });
+
+        console.log(selectedTemplate);
+        // Navigate to the sections selection page with the selected template
+        router.push(`/resume/select-sections/${selectedTemplate}`);
       
         // In a real app, you would navigate to the editing page
         console.log(`Proceeding with template ${selectedTemplate}`);
@@ -158,7 +164,6 @@ const SelectTemplate = () => {
   
     return (
         <div className="min-h-screen bg-background">
-            <Header />
         
             <main className="max-w-7xl mx-auto px-4 pb-16">
                 <div className="mt-12 mb-8 animate-fade-in">
@@ -176,8 +181,25 @@ const SelectTemplate = () => {
                     sortBy={sortBy}
                     onSortChange={setSortBy}    
                 />
+
+                {/* Only show recommended section if we're not filtering */}
+                {!searchQuery && categoryFilter === "all" && (
+                    <>
+                        <RecommendedSection 
+                            templates={templatesData.sort((a, b) => b.popularity - a.popularity).slice(0, 4)}
+                            selectedTemplate={selectedTemplate}
+                            onSelect={handleTemplateSelect}
+                            onPreview={handleTemplatePreview}
+                        />
+                        <hr className="my-8 border-border  " />
+                    </>
+                )}
           
                 <div className="mt-8">
+                    <div className="flex items-center mb-6">
+                        <List className="h-5 w-5 mr-2 text-primary" />
+                        <h2 className="text-2xl font-medium text-foreground">All Templates</h2>
+                    </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {filteredTemplates.map((template) => (
                             <TemplateCard
@@ -212,15 +234,7 @@ const SelectTemplate = () => {
                     )}
                 </div>
           
-                {/* Only show recommended section if we're not filtering */}
-                {!searchQuery && categoryFilter === "all" && (
-                    <RecommendedSection 
-                        templates={templatesData.sort((a, b) => b.popularity - a.popularity).slice(0, 4)}
-                        selectedTemplate={selectedTemplate}
-                        onSelect={handleTemplateSelect}
-                        onPreview={handleTemplatePreview}
-                    />
-                )}
+             
           
                 {/* Fixed bottom CTA when a template is selected */}
                 {selectedTemplate && (
@@ -256,11 +270,13 @@ const SelectTemplate = () => {
                         <div className="p-6">
                             <div className="aspect-[1/1.414] bg-white rounded-md overflow-hidden border border-border mb-6">
                                 <Image 
-                                    src="../../../assets/icons/avatars/avatar1.jpg" 
+                                    src={template1} 
                                     alt={previewTemplate?.name as string} 
                                     width={100}
                                     height={100}
+                                    loading="lazy"
                                     className="w-full h-full object-cover"
+                                    unoptimized={true}
                                 />
                             </div>
                 

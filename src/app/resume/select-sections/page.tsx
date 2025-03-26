@@ -1,5 +1,6 @@
 import SectionSelection from "@/components/section-selection/SectionSelection";
   
+// will go with sections selection first  because on the basis of sections seleted we will show the template
 
 const SelectSectionsInResume = () => {
     return (

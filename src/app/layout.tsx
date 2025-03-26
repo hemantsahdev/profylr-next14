@@ -3,8 +3,7 @@ import "./globals.css";
 import "../css/custom-scrollbar.css";
 import Topbar from "@/components/topbar/Topbar";
 import Sidebar from "@/shared/sidebar/Sidebar";
-import { Toaster } from "sonner";
-
+import Providers from "./Providers";
 
 
 export const metadata: Metadata = {
@@ -20,22 +19,25 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <main className="flex h-screen w-screen  ">
-                    <section className="h-full w-[4.5%] bg-white " >
-                        <Sidebar />
-                    </section>
-                    <section className="h-full w-[95.5%] flex flex-col bg-gradient-to-br from-indigo-100 to-rose-100 ">
-                        <div className="min-h-[8%] w-full ">
-                            <div className="h-full w-full ">
+                <Providers>
+                    <main className="flex w-screen">
+                        {/* <section className="min-h-screen w-[5%] bg-red-500 " >
+    <Sidebar />
+    </section> */}
+                        <section 
+                            className={`min-h-screen w-[100%] flex flex-col transition-all duration-500 
+        bg-gradient-to-br from-gray-100 to-rose-100 dark:from-gray-900 dark:to-gray-800`}
+                        >
+                            <div className="sticky top-0 z-10">
                                 <Topbar />
                             </div>
-                        </div>
-                        <div className="min-h-[92%] w-full">
-                            {children}
-                        </div>
-                        <Toaster/>
-                    </section>
-                </main>
+                            <div className="flex-1">
+                                {children}
+                            </div>
+                        </section>
+                    </main>
+
+                </Providers>
             </body>
         </html>
     );

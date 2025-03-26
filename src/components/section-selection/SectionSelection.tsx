@@ -7,6 +7,7 @@ import { arrayMove } from "@dnd-kit/sortable";
 import { Download , Undo2 } from "lucide-react";
 import { toast } from "sonner";
 import { ResumeSection } from "@/types/resumeSections";
+import { useRouter, useParams } from "next/navigation";
 import { Button } from "../ui/button";
 import SectionsList from "./SectionsList";
 import ResumeBuilder from "./ResumeBuilder";
@@ -16,7 +17,8 @@ import ResumeBuilder from "./ResumeBuilder";
 
 const SectionSelection = () => {
 
- 
+    const router = useRouter();
+    const params = useParams();
 
     const [resumeSections, setResumeSections] = useState<ResumeSection[]>([]);
     const [history, setHistory] = useState<ResumeSection[][]>([]);
@@ -123,7 +125,21 @@ const SectionSelection = () => {
         }
     };
 
-  
+    // Handle proceeding to the next step
+    const handleProceed = () => {
+        if (resumeSections.length === 0) {
+            toast.error("Please add at least one section to your resume");
+            return;
+        }
+    
+        toast.success("Ready to edit your resume content", {
+            description: "Fill in the details for each section"
+        });
+
+        console.log(params);
+        router.push("/resume/fill-details");
+    };
+
 
     return (
         <section className="h-full w-full" >
@@ -163,11 +179,14 @@ const SectionSelection = () => {
                 onDragEnd={handleDragEnd}
             >
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
-                    <div className="lg:col-span-2 overflow-hidden">
-                        <SectionsList />
+                    <div className="lg:col-span-2 overflow-hidden ">
+                        <SectionsList 
+                            selectedSections={resumeSections.map(section => section.id)} 
+                            onProceed={handleProceed}
+                        />
                     </div>
             
-                    <div className="lg:col-span-1">
+                    <div className="lg:col-span-1 h-[50vh]">
                         <ResumeBuilder 
                             sections={resumeSections} 
                             onRemoveSection={handleRemoveSection}

@@ -9,6 +9,10 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            screens: {
+                "3xl": "1800px", // New breakpoint for wider screens
+                "4xl": "2000px", // Another for ultra-wide screens
+            },
             colors: {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",

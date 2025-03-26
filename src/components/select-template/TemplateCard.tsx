@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Eye, Check } from "lucide-react";
 import { toast } from "sonner";
 import Image from "next/image";
+import template1 from "@/assets/images/resume-templates/template1.jpeg";
 
 interface TemplateCardProps {
     id: string;
@@ -52,12 +53,13 @@ const TemplateCard = ({
           
                 <div className="template-preview aspect-[3/4] relative overflow-hidden">
                     <Image 
-                        src={image} 
+                        src={template1} 
                         alt={name} 
-                        className="object-cover w-full h-full transition-transform duration-500"
+                        className=" w-full h-full transition-transform duration-500"
                         loading="lazy"
                         width={100}
                         height={100}
+                        unoptimized={true}
                     />
             
                     <div className={cn(

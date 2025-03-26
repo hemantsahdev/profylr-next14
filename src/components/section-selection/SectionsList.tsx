@@ -2,13 +2,15 @@ import { useDraggable } from "@dnd-kit/core";
 import { 
     Award, Book, Briefcase, Code, FileText, 
     Folder, Globe, GraduationCap, Heart, 
-    HelpingHand, User, Users, Trophy, GripVertical, Search
+    HelpingHand, User, Users, Trophy, GripVertical, Search,
+    ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { RESUME_SECTIONS } from "./SectionSelection";
 import { ScrollArea } from "../ui/scroll-area";
+import { Button } from "../ui/button";
 
 
 // Maps icon names to Lucide icon components
@@ -28,7 +30,7 @@ const iconMap: Record<string, React.ReactNode> = {
     "users": <Users size={18} />
 };
 
-const SectionsList = () => {
+const SectionsList = ({ selectedSections, onProceed }: { selectedSections: string[], onProceed: () => void }) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     // Filter sections based on search term
@@ -46,7 +48,7 @@ const SectionsList = () => {
     );
 
     return (
-        <div className="p-6 bg-white rounded-xl shadow-sm border ">
+        <div className="p-6 bg-white rounded-xl shadow-sm border 2xl:h-[80vh] ">
             <h2 className="text-lg font-medium text-gray-700 mb-4">Resume Sections</h2>
             <p className="text-sm text-gray-500 mb-4">Drag and drop sections to build your resume</p>
       
@@ -59,13 +61,13 @@ const SectionsList = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
-            <ScrollArea className="h-[50vh] pr-4 relative 2xl:h-[54vh] overflow-y-auto">
+            <ScrollArea className="h-[50vh] pr-4 relative 2xl:h-[49vh]  overflow-y-auto">
                 {essentialSections.length > 0 && (
                     <>
                         <h3 className="text-sm font-medium text-gray-600 mb-3">Essential Sections</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                             {essentialSections.map((section) => (
-                                <DraggableSection key={section.id} section={section} />
+                                <DraggableSection key={section.id} section={section} isSelected={selectedSections.includes(section.id)} />
                             ))}
                         </div>
                     </>
@@ -76,7 +78,7 @@ const SectionsList = () => {
                         <h3 className="text-sm font-medium text-gray-600 mb-3">Additional Sections</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                             {additionalSections.map((section) => (
-                                <DraggableSection key={section.id} section={section} />
+                                <DraggableSection key={section.id} section={section} isSelected={selectedSections.includes(section.id)} />
                             ))}
                         </div>
                     </>
@@ -87,15 +89,37 @@ const SectionsList = () => {
           No matching sections found
                     </div>
                 )}
-            </ScrollArea>
 
+                
+            </ScrollArea>
+            {/* Proceed button that appears when at least 1 section is selected */}
+            {selectedSections.length > 0 && (
+                <div className="mt-8 pt-6 border-t border-gray-100">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <p className="text-sm font-medium text-gray-700">
+                                {selectedSections.length} {selectedSections.length === 1 ? "section" : "sections"} selected
+                            </p>
+                            <p className="text-xs text-gray-500 mt-1">
+                You can continue to add more sections later
+                            </p>
+                        </div>
+                        <Button 
+                            onClick={onProceed}
+                            className="gap-2"
+                        >
+              Proceed <ArrowRight size={16} />
+                        </Button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
 
 
-const DraggableSection = ({ section }: { section: typeof RESUME_SECTIONS[0] }) => {
+const DraggableSection = ({ section , isSelected }: { section: typeof RESUME_SECTIONS[0], isSelected: boolean }) => {
     const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
         id: section.id,
     });
@@ -115,6 +139,11 @@ const DraggableSection = ({ section }: { section: typeof RESUME_SECTIONS[0] }) =
         >
             <div className="mr-3 text-gray-600">{iconMap[section.icon]}</div>
             <span className="font-medium text-gray-700">{section.title}</span>
+            {isSelected && (
+                <span className="ml-auto mr-2 text-xs px-1.5 py-0.5 bg-green-100 text-green-700 rounded-full">
+          Added
+                </span>
+            )}
             <GripVertical className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" size={16} />
         </motion.div>
     );
